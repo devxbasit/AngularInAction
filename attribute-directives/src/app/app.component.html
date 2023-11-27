@@ -1,0 +1,10 @@
+<div [ngStyle]="divStyle">NgStyle directive</div>
+
+<button (click)="changeDivStyle()">Click to change style</button>
+
+<hr />
+
+<div [style.width.px]="100" [style.height.px]="100" [ngClass]="divClasses">
+  NgClass Directive
+</div>
+<button (click)="changeDivClasses()">click to change classes</button>

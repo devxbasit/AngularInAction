@@ -1,0 +1,46 @@
+<nav>
+  <a (click)="loadPage('')" [class.active]="currentTab === ''">Home</a>
+  <a (click)="loadPage('products')" [class.active]="currentTab === 'products'"
+    >Products</a
+  >
+  <a (click)="loadPage('about')" [class.active]="currentTab === 'about'"
+    >About us</a
+  >
+  <a (click)="loadPage('contact')" [class.active]="currentTab === 'contact'"
+    >Contact us</a
+  >
+</nav>
+
+<br />
+<br />
+<br />
+<br />
+
+<section [ngSwitch]="currentTab">
+  <div *ngSwitchCase="''">this is Home page</div>
+  <div *ngSwitchCase="'products'">this is Products page</div>
+  <div *ngSwitchCase="'about'">this is About Us page</div>
+  <div *ngSwitchCase="'contact'">this is Contact Us page</div>
+</section>
+
+<h1>ngIf</h1>
+<hr />
+<select (change)="setMccMnc($event)">
+  <option>Select MccMnc</option>
+  <option value="404001">404001</option>
+  <option value="404002">404002</option>
+  <option value="404003">404003</option>
+  <option value="404004">404004</option>
+</select>
+
+<div *ngIf="MccMnc">Selected MccMnc = {{ MccMnc }}</div>
+<br />
+<p *ngIf="isDataArrived">{{ data }}</p>
+<button *ngIf="!isDataArrived" (click)="getDataFromServer()">
+  click to get data from server
+</button>
+
+<h1>ngFor</h1>
+<hr />
+
+<app-grid> </app-grid>

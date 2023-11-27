@@ -1,0 +1,32 @@
+<section [class.hide]="isFormSubmitted">
+  <div>
+    <label>Enter Name: </label>
+    <input
+      type="text"
+      name="name"
+      (input)="setPersonValue($event)"
+      [value]="person.name"
+    />
+  </div>
+
+  <div>
+    <label>Enter Salary</label>
+    <input
+      type="number"
+      name="salary"
+      (input)="setPersonValue($event)"
+      [value]="person.salary"
+    />
+  </div>
+
+  <button (click)="submitForm()">Submit</button>
+</section>
+
+<section [class.hide]="!isFormSubmitted">
+  <p>Thank you for submitting your response</p>
+  <p>Name = {{ person.name }}</p>
+  <p>Salary = {{ person.salary }}</p>
+  <a href="#" (click)="submitAnotherResponse()"
+    >click to submit another response</a
+  >
+</section>

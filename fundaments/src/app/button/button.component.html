@@ -1,0 +1,99 @@
+<style>
+  * {
+    color: blue;
+  }
+
+  .danger-btn {
+    background-color: red;
+  }
+
+  .success-btn {
+    background-color: green;
+  }
+</style>
+
+<h1>Button Component</h1>
+<h1>
+  **************************************************************************************************
+</h1>
+
+<label>Enter username: </label>
+<input
+  type="text"
+  #addUsername
+  (input)="writeOnConsole(addUsername.value)"
+  (input)="setUsername(addUsername.value)"
+/>
+
+<p>textbox value = {{ username }}</p>
+<p>2 + 2 = {{ 2 + 2 }}</p>
+
+<hr />
+
+<button (click)="setUsername(addUsername.value.toUpperCase())">
+  click to transform to UpperCase
+</button>
+
+<!-- property binding -->
+<Button [disabled]="isDisabled">Disabled Button - Property Binding</Button>
+<Button bind-disabled="isDisabled">Disabled Button - Property Binding</Button>
+
+<hr />
+<!-- class binding -->
+<button [class]="'success-btn'">Class Binding - Success Button</button>
+<button [class.danger-btn]="hasError">
+  Class Binding - Danger Button if hasError is True
+</button>
+
+<hr />
+
+<!-- attribute vs property, attribute are used to set initial value of property  -->
+<!-- attribute binding  -->
+<table border="1">
+  <thead>
+    <tr>
+      <th>Country</th>
+      <th>State</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <!-- <td [rowspan]="2">India</td> Can't bind to 'rowspan' since it isn't a known property of 'td'. -->
+      <td [attr.rowspan]="2">India</td>
+      <td>Delhi</td>
+    </tr>
+    <tr>
+      <td>Mumbai</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- style binding -->
+<p [style.color]="'red'">Red Color</p>
+<p [style.color]="isDisabled ? 'orange' : 'blue'">
+  if isDisabled then orange color
+</p>
+
+<p [style.backgroundColor]="'green'">Green background color</p>
+<p [style.background-color]="'blue'">Blue background color</p>
+
+<!-- event binding -->
+<button id="myButtonId" (click)="sayHello($event)">Click to Say Hello</button>
+
+<button (click)="username = 'Basit'">click to set username = Basit</button>
+
+<hr />
+
+<label for="">Enter Email Address and hit enter</label>
+<input type="email" (keyup.enter)="setEmailAddress($event)" />
+<p>{{ emailAddress }}</p>
+
+<hr />
+
+<select (change)="OnCountryChange($event)">
+  <option>Select Country</option>
+  <option value="india">India</option>
+  <option value="pakistan">Pakistan</option>
+</select>
+
+<p>Selected Country = {{ countryName }}</p>

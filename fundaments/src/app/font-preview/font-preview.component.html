@@ -1,0 +1,26 @@
+<h1>Font Preview Component</h1>
+<h1>
+  **************************************************************************************************
+</h1>
+
+<label for="">Enter Sample Text: </label>
+<input type="text" value="{{ sampleText }}" (input)="setSampleText($event)" />
+
+<label for="">Font Size</label>
+<input
+  type="range"
+  (input)="setFontSize($event)"
+  value="10"
+  min="10"
+  max="100"
+  step="1"
+/>
+
+<select (change)="setClass($event)">
+  <option>Select Color</option>
+  <option value="primary">Primary</option>
+  <option value="secondary">Secondary</option>
+  <option value="danger">Danger</option>
+</select>
+
+<p [style.font-size.px]="fontSize" [class]="textClass">{{ sampleText }}</p>

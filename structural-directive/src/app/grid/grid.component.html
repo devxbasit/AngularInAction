@@ -1,0 +1,44 @@
+<p>grid works!</p>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Salary</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let employee of employees; let i = index">
+      <td>{{ i + 1 }}</td>
+      <td>{{ employee.name }}</td>
+      <td>{{ employee.salary }}</td>
+      <td>
+        <button (click)="selectEmployeeToEdit(i)">Edit Details</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<section *ngIf="selectedEmployee.name">
+  <label>Name :</label>
+  <input
+    type="text"
+    name="name"
+    [value]="selectedEmployee.name"
+    [disabled]="!isInlineEditingEnabled"
+    (input)="updateSelectedEmployee($event)"
+  />
+  <br />
+  <label>Salary :</label>
+  <input
+    type="text"
+    name="salary"
+    [value]="selectedEmployee.salary"
+    [disabled]="!isInlineEditingEnabled"
+    (input)="updateSelectedEmployee($event)"
+  />
+  <button (click)="enableInlineEditing()">Enable Inline Editing</button>
+</section>
