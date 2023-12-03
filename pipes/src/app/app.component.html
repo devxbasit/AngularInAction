@@ -14,13 +14,14 @@
 
 
 
-
+<p>KeyValue Pipe</p>
 <ul>
   <li *ngFor="let entry of student | keyvalue">
     {{ entry.key }} = {{ entry.value }}
   </li>
 </ul>
 
+<p>Slice Pipe</p>
 <ul>
   <li *ngFor="let fruit of fruits | slice:1:3">
     {{ fruit }}

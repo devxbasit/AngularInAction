@@ -1,0 +1,9 @@
+<input type="text" (keyup.enter)="setData($event)">
+<app-child [name]="data" [list]="books"></app-child>
+
+
+<hr>
+
+<label>Add Book </label>
+<input type="text" (keyup.enter)="addBook($event)">
+
