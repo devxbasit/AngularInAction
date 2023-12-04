@@ -1,0 +1,5 @@
+<label for="">Type book name and hit enter </label> 
+<input type="text" (keyup.enter)="addBook($event)">
+<app-child [books]="books" (removeBookEvent)="removeBook($event)"></app-child>
+
+<p *ngIf="deletedBook">you delete book: {{deletedBook}}</p>

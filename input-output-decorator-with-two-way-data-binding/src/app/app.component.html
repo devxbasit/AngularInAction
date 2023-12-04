@@ -1,0 +1,12 @@
+<label>Enter the Quantity</label>
+<input type="text" [value]="quantity" #addQuantityTxt>
+<button (click)="addQuantity(addQuantityTxt.value)">Add Quantity</button>
+<p>Total Quantity : {{quantity}}</p>
+
+
+<hr>
+
+<!-- <app-product [quantity]="quantity" (quantityChange)="updateQuantity($event)"></app-product> -->
+<app-product [(quantity)]="quantity" ></app-product>
+
+
