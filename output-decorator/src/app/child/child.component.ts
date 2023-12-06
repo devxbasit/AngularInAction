@@ -7,18 +7,15 @@ import { throwIfEmpty } from 'rxjs';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './child.component.html',
-  styleUrl: './child.component.scss'
+  styleUrl: './child.component.scss',
 })
 export class ChildComponent {
-  
   @Output('onBookAddEvent') bookAddEvent = new EventEmitter<string>();
   books: string[] = [];
 
   addBook(event: any) {
-    
     this.books.push(event.target.value);
     this.bookAddEvent.emit(event.target.value);
-    event.target.value = ''
+    event.target.value = '';
   }
-
 }

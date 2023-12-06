@@ -21,7 +21,6 @@ export class AppComponent {
   }
 
   removeBook(index: number) {
-    
     this.deletedBook = this.books[index];
     this.books.splice(index, 1);
   }

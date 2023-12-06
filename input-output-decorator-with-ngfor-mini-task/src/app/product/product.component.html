@@ -1,0 +1,15 @@
+<p>Product Name {{ product.ProductName }}</p>
+<p>Quantity {{ product.ProductQuantity }}</p>
+<p>
+  Total Price {{ product.ProductPrice * product.ProductQuantity }} ({{
+    product.ProductPrice
+  }}
+  x {{ product.ProductQuantity }})
+</p>
+
+<button (click)="IncreaseQuantity()">Increase Quantity</button>
+<button (click)="DecreaseQuantity()">Decrease Quantity</button>
+
+<button (click)="UpdateCartStatus()">
+  {{ !isAddedToCart ? "Add To" : "Remove From" }} cart
+</button>

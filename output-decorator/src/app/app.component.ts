@@ -8,14 +8,12 @@ import { ChildComponent } from './child/child.component';
   standalone: true,
   imports: [CommonModule, RouterOutlet, ChildComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  books:string[] = [];
+  books: string[] = [];
   title = 'output-decorator';
   bookAddEventHandler(event: any) {
-    
     this.books.push(event);
-    
   }
 }

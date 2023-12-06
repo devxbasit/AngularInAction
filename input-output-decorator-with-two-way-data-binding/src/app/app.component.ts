@@ -8,21 +8,17 @@ import { ProductComponent } from './product/product.component';
   standalone: true,
   imports: [CommonModule, RouterOutlet, ProductComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
 })
-
-
 export class AppComponent {
   title = 'input-output-decorator-with-two-way-data-binding';
-  quantity:number = 0;
+  quantity: number = 0;
 
-  
   addQuantity(quantity: string) {
-    this.quantity = parseInt(quantity)
+    this.quantity = parseInt(quantity);
   }
 
-  updateQuantity(quantity:number) {
+  updateQuantity(quantity: number) {
     this.quantity = quantity;
   }
-
 }

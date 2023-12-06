@@ -1,18 +1,16 @@
 <p>{{ title | lowercase }}</p>
 <p>{{ title | uppercase }}</p>
 <p>{{ title | titlecase }}</p>
-<p> {{title | slice:4:10 }}</p>
+<p>{{ title | slice : 4 : 10 }}</p>
 
-<p>{{ createdDateTime | date:'shortDate' }}</p>
-<p>{{ createdDateTime | date:'mediumDate' }}</p>
-<p>{{ createdDateTime | date:'longDate'| uppercase }}</p>
+<p>{{ createdDateTime | date : "shortDate" }}</p>
+<p>{{ createdDateTime | date : "mediumDate" }}</p>
+<p>{{ createdDateTime | date : "longDate" | uppercase }}</p>
 
-<p>rate = {{ rate | number:'5.6-9' }}</p>
+<p>rate = {{ rate | number : "5.6-9" }}</p>
 
-<p>rate = {{ totalAmount | currency:'INR':'code'}}</p>
-<p>rate = {{ totalAmount | currency:'INR':'symbol' }}</p>
-
-
+<p>rate = {{ totalAmount | currency : "INR" : "code" }}</p>
+<p>rate = {{ totalAmount | currency : "INR" : "symbol" }}</p>
 
 <p>KeyValue Pipe</p>
 <ul>
@@ -23,12 +21,10 @@
 
 <p>Slice Pipe</p>
 <ul>
-  <li *ngFor="let fruit of fruits | slice:1:3">
+  <li *ngFor="let fruit of fruits | slice : 1 : 3">
     {{ fruit }}
   </li>
 </ul>
 
-
-
-<p>{{student | json}}</p>
-<p>{{fruits | json}}</p>
+<p>{{ student | json }}</p>
+<p>{{ fruits | json }}</p>

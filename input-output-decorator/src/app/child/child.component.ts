@@ -6,17 +6,13 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './child.component.html',
-  styleUrl: './child.component.scss'
+  styleUrl: './child.component.scss',
 })
-
 export class ChildComponent {
+  @Input() books: string[] = [];
+  @Output() removeBookEvent = new EventEmitter<number>();
 
-  @Input() books:string[] = [];
-  @Output() removeBookEvent = new EventEmitter<number>()
-  
-  removeBook(index: number){
-    
+  removeBook(index: number) {
     this.removeBookEvent.emit(index);
-
   }
 }
