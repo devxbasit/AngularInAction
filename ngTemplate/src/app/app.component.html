@@ -1,0 +1,88 @@
+<button (click)="toggleFloatingButton()"> toggle floating button</button>
+<br />
+
+<ng-template [ngIf]="showFloatingButton">
+  <app-floating-button></app-floating-button>
+</ng-template>
+
+<hr />
+
+<p *ngIf="isUserLoggedIn">Logout</p>
+
+<hr />
+
+<ng-template [ngIf]="isUserLoggedIn">
+  <p>Logout</p>
+</ng-template>
+
+<hr />
+
+<p *ngIf="isUserLoggedIn; else login">Logout</p>
+
+<ng-template #login>
+  <p>Login</p>
+</ng-template>
+
+<hr />
+
+<ng-template [ngIf]="isUserLoggedIn" [ngIfElse]="loginSection">
+  <p>Logout</p>
+</ng-template>
+
+<ng-template #loginSection>
+  <p>Login</p>
+</ng-template>
+
+<hr />
+
+<div *ngIf="isUserLoggedIn; then logoutTemplate; else loginTemplate"></div>
+
+<ng-template #loginTemplate>
+  <p>login</p>
+</ng-template>
+
+<ng-template #logoutTemplate>
+  <p>logout</p>
+</ng-template>
+
+<hr />
+
+<ng-template [ngIf]="isUserLoggedIn" [ngIfThen]="logoutTemplate" [ngIfElse]="loginTemplate"></ng-template>
+
+<hr />
+
+<div *ngFor="let book of books; index as num">
+  <p>{{ num + 1 }} - {{ book }}</p>
+</div>
+<hr />
+
+<ng-template [ngForOf]="books" ngFor let-book let-num="index">
+  <p>{{num + 1}} - {{book}}</p>
+</ng-template>
+
+<hr />
+
+
+<div [ngSwitch]="gender">
+  <p *ngSwitchCase="'m'">Gender = Male</p>
+  <p *ngSwitchCase="'f'">Gender = Female</p>
+  <p *ngSwitchDefault>Gender = Unknown</p>
+</div>
+
+<hr />
+
+<div [ngSwitch]="gender">
+  <ng-template [ngSwitchCase]="'m'">
+    <p>Gender = Male</p>
+  </ng-template>
+
+  <ng-template [ngSwitchCase]="'f'">
+    <p>Gender = Female</p>
+  </ng-template>
+
+  <ng-template ngSwitchDefault>
+    <p>Gender = Unknown</p>
+  </ng-template>
+
+
+</div>
