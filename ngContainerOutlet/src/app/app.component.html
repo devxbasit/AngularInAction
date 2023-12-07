@@ -1,0 +1,37 @@
+<header>
+  <h2>Header</h2>
+  <ng-container *ngTemplateOutlet="brandTemplate; context: brandContextInfo"></ng-container>
+</header>
+
+
+
+<br />
+<br />
+
+
+<section>
+  <h2>Body</h2>
+  <ng-container
+    *ngTemplateOutlet="brandTemplate; context: {brandName: '******************custom brand name', key1: 'value 1', subHeading:'*******dummy sub heading'}"></ng-container>
+</section>
+
+
+<br />
+<br />
+
+<footer>
+  <h2>Footer</h2>
+
+  <ng-container *ngTemplateOutlet="brandTemplate; context:brandContextInfo"></ng-container>
+  <p>Footer note here &copy; 2023</p>
+</footer>
+
+<ng-template #brandTemplate let-data let-brand="brandName" let-heading="subHeading">
+  <div>
+    <img src="../assets/logo.jpg" alt="">
+    <p class="brand-name"><strong>{{brand}}</strong></p>
+    <p class="brand-sub-heading">{{heading}}</p>
+  </div>
+</ng-template>
+
+<!-- see also $implicit  -->

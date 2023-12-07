@@ -1,0 +1,44 @@
+<ng-template>
+  will not be shown
+</ng-template>
+
+<ng-container>
+  always visible
+</ng-container>
+
+<hr />
+
+
+<ng-container *ngIf="isDataProcessed">
+  <p>Data Processed</p>
+</ng-container>
+
+<ng-template [ngIf]="isDataProcessed">
+  <p>Data Processed</p>
+</ng-template>
+
+
+<hr>
+
+<ul>
+  <div *ngFor="let client of clients">
+    <li *ngIf="client.paid">{{client.name}}</li>
+  </div>
+</ul>
+
+<ul>
+  <ng-container *ngFor="let client of clients">
+    <li *ngIf="client.paid">{{client.name}}</li>
+  </ng-container>
+</ul>
+
+
+<ul>
+  <ng-template [ngForOf]="clients" ngFor let-client let-num="index">
+    <ng-container>
+      <ng-template [ngIf]="client.paid">
+        <li>{{client.name}}</li>
+      </ng-template>
+    </ng-container>
+  </ng-template>
+</ul>
