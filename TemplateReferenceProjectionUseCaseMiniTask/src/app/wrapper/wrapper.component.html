@@ -1,0 +1,14 @@
+<section>
+    <p>Repository name: {{repositoryName}}</p>
+
+    <ng-container *ngIf="commitHistory.length > 0">
+        <p>Latest Commit <strong>{{commitHistory[commitHistory.length -1].commitMessage}} </strong> on
+            {{commitHistory[commitHistory.length -1].dateTime | date: 'long'}}</p>
+    </ng-container>
+</section>
+<hr>
+
+
+<ng-container *ngFor="let commit of commitHistory">
+    <ng-container *ngTemplateOutlet="listTemplate; context: {commit : commit}"></ng-container>
+</ng-container>

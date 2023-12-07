@@ -1,0 +1,5 @@
+<div>
+    <i>{{commit.name.includes('.') ? 'File' : 'Directory'}}</i>
+    <span>{{commit.commitMessage}}</span>
+    <span>{{commit.dateTime | date: 'shortDate'}}</span>
+</div>

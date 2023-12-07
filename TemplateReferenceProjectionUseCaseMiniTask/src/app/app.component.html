@@ -1,0 +1,23 @@
+<section id="pushBox">
+  <label for="">Enter File/Dir</label>
+  <br>
+  <input type="text" #addName>
+  <br>
+  <br>
+  <label>Enter Commit message</label>
+  <br>
+  <input type="text" #addCommit>
+  <br>
+  <br>
+
+  <button (click)="commitHandler(addName.value, addCommit.value)">Commit Changes</button>
+</section>
+
+<hr>
+
+<app-wrapper [repositoryName]="repositoryName" [commitHistory]="commitHistory"
+  [listTemplate]="listTemplate"></app-wrapper>
+
+<ng-template #listTemplate let-data let-commit="commit">
+  <app-list [commit]="commit"></app-list>
+</ng-template>

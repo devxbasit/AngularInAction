@@ -1,0 +1,6 @@
+<ng-content></ng-content>
+
+<ng-container *ngFor="let value of values">
+    <ng-container *ngTemplateOutlet="tempRef; context: {value:value, name: name} "> </ng-container>
+    <label> {{value}}</label>
+</ng-container>

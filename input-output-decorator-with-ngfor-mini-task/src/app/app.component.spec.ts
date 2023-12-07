@@ -14,16 +14,18 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'input-output-decorator-with-ngfor-mini-task' title`, () => {
+  it(`should have the 'InputOutputDecorator-with-ngfor-mini-task' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('input-output-decorator-with-ngfor-mini-task');
+    expect(app.title).toEqual('InputOutputDecorator-with-ngfor-mini-task');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, input-output-decorator-with-ngfor-mini-task');
+    expect(compiled.querySelector('h1')?.textContent).toContain(
+      'Hello, InputOutputDecorator-with-ngfor-mini-task'
+    );
   });
 });

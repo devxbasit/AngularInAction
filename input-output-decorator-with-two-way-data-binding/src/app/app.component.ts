@@ -11,7 +11,7 @@ import { ProductComponent } from './product/product.component';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'input-output-decorator-with-two-way-data-binding';
+  title = 'InputOutputDecorator-with-two-way-data-binding';
   quantity: number = 0;
 
   addQuantity(quantity: string) {

@@ -1,5 +1,5 @@
 {
-  "name": "input-output-decorator-with-two-way-data-binding",
+  "name": "InputOutputDecorator-with-two-way-data-binding",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:input-output-decorator-with-two-way-data-binding": "node dist/input-output-decorator-with-two-way-data-binding/server/server.mjs"
+    "serve:ssr:InputOutputDecorator-with-two-way-data-binding": "node dist/InputOutputDecorator-with-two-way-data-binding/server/server.mjs"
   },
   "private": true,
   "dependencies": {

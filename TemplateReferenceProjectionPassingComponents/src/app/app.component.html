@@ -1,0 +1,21 @@
+<app-input>
+  <app-counter></app-counter>
+</app-input>
+
+
+
+<app-radio [tempRef]="radioTemplate" [name]="'country'" [values]="['India', 'China', 'Russia']">
+  <label>Select Country</label>
+</app-radio>
+
+<br>
+
+<app-radio [tempRef]="radioTemplate" [name]="'gender'" [values]="['Male', 'Female']">
+  <label>Select Gender</label>
+</app-radio>
+
+
+
+<ng-template #radioTemplate let-data let-name="name" let-value="value">
+  <input type="radio" [name]="name" [value]="value">
+</ng-template>

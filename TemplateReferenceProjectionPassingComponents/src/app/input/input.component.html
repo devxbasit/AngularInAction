@@ -1,0 +1,7 @@
+<button (click)="toggle()">toggle</button>
+
+<div [style.backgroundColor]="'red'">
+    <ng-template [ngIf]="counterStatus">
+        <ng-content></ng-content>
+    </ng-template>
+</div>

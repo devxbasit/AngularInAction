@@ -12,7 +12,7 @@ import { Product } from './product';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'input-output-decorator-with-ngfor-mini-task';
+  title = 'InputOutputDecorator-with-ngfor-mini-task';
   products: Product[] = [
     { ProductName: 'Pen', ProductPrice: 10, ProductQuantity: 1 },
     { ProductName: 'mouse', ProductPrice: 500, ProductQuantity: 1 },
