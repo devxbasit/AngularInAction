@@ -1,0 +1,7 @@
+<label> Select MccMnc </label>
+<select>
+  <option>Select MccMnc</option>
+  <ng-container *ngFor="let mccMnc of getMccMnc(); ">
+    <option value="{{mccMnc.id}}">{{mccMnc.MccMnc}}</option>
+  </ng-container>
+</select>

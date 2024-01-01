@@ -14,3 +14,4 @@ import { FontPreviewComponent } from './font-preview/font-preview.component';
 export class AppComponent {
   title = 'Fundaments';
 }
+

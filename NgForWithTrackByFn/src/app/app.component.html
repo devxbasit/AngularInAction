@@ -1,0 +1,13 @@
+<label>Enter UserName</label>
+<input type="text" [(ngModel)]="name">
+<button (click)="addUser()">Add User</button>
+
+
+<button (click)="refresh()">refresh</button>
+
+<ul>
+  <li *ngFor="let user of users; let i = index; trackBy:trackUsers">
+    {{user.name}}
+    <span (click)="removeUser(i)"><b> click to remove</b></span>
+  </li>
+</ul>

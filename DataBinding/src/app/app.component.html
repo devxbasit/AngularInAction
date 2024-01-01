@@ -1,0 +1,31 @@
+<!-- Interpolation -->
+<p>Hello {{title}}</p>
+
+<br>
+<!-- Property Binding -->
+
+<input type="text" [value]="name">
+
+<br>
+<!-- Attribute Binding -->
+<p [attr.custom-attribute]="'hello'" [attr.aria-label]="'somevalue'">Attribute Binding, Inspect this</p>
+
+<br>
+<!-- Event Binding -->
+
+<button (click)="incrementCounter()"> Clicked {{counter}} times </button>
+
+<br>
+<!-- Class Binding -->
+<p [class.on-sale]="onSale">Class Binding - on Sale</p>
+<p [class]="'on-sale dark-mode border-on'">Class Binding - on Sale</p>
+<p [class]="classConfig">Class Binding - on Sale</p>
+
+
+
+<br>
+<!-- Style Binding -->
+
+<button [style.width.px]="'500'">Style Binding</button>
+<h1 [style.backgroundColor]="'red'">Style Binding</h1>
+<h1 [style]="'background-color:yellow; border: 1px solid red; color: green'">Style Binding</h1>
