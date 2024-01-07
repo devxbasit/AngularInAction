@@ -4,6 +4,7 @@ import { RouterOutlet } from '@angular/router';
 import { CountryService } from './services/country.service';
 import {
   FormArray,
+  FormBuilder,
   FormControl,
   FormGroup,
   ReactiveFormsModule,
@@ -25,41 +26,44 @@ export class AppComponent implements OnInit {
   formStatus: string = '';
   formData: any = {};
 
-  constructor(private countryService: CountryService) {}
+  constructor(
+    private countryService: CountryService,
+    private formBuilder: FormBuilder
+  ) {}
 
   ngOnInit(): void {
     this.bindCountry();
-    this.addUserReactiveForm = new FormGroup({
-      firstName: new FormControl(null, [
+    this.addUserReactiveForm = this.formBuilder.group({
+      firstName: this.formBuilder.control(null, [
         Validators.required,
         Validators.minLength(5),
         CustomValidator.noSpaceAllowed,
       ]),
-      lastName: new FormControl(null, [
+      lastName: this.formBuilder.control(null, [
         Validators.required,
         CustomValidator.noSpaceAllowed,
       ]),
-      email: new FormControl(null, [Validators.required]),
-      username: new FormControl(null, [
+      email: this.formBuilder.control(null, [Validators.required]),
+      username: this.formBuilder.control(null, [
         Validators.required,
         CustomValidator.checkUserName,
       ]),
-      dob: new FormControl(null, [Validators.required]),
+      dob: this.formBuilder.control(null, [Validators.required]),
 
-      gender: new FormControl(null, [Validators.required]),
+      gender: this.formBuilder.control(null, [Validators.required]),
 
-      address: new FormGroup({
-        street: new FormControl(null, [Validators.required]),
-        country: new FormControl(null, [Validators.required]),
-        city: new FormControl(null, [Validators.required]),
-        region: new FormControl(null, [Validators.required]),
-        postalCode: new FormControl(null, [Validators.required]),
+      address: this.formBuilder.group({
+        street: this.formBuilder.control(null, [Validators.required]),
+        country: this.formBuilder.control(null, [Validators.required]),
+        city: this.formBuilder.control(null, [Validators.required]),
+        region: this.formBuilder.control(null, [Validators.required]),
+        postalCode: this.formBuilder.control(null, [Validators.required]),
       }),
 
-      skills: new FormArray([
-        new FormControl('Problem Solving', [Validators.required]),
+      skills: this.formBuilder.array([
+        this.formBuilder.control('Problem Solving', [Validators.required]),
       ]),
-      experience: new FormArray([]),
+      experience: this.formBuilder.array([]),
     });
 
     // this.addUserReactiveForm
@@ -131,18 +135,18 @@ export class AppComponent implements OnInit {
 
   addNewSkill() {
     (<FormArray>this.addUserReactiveForm.get('skills')).push(
-      new FormControl(null, [Validators.required])
+      this.formBuilder.control(null, [Validators.required])
     );
   }
 
   addExperience() {
     (<FormArray>this.addUserReactiveForm.get('experience')).push(
-      new FormGroup({
-        companyName: new FormControl(null, [Validators.required]),
-        position: new FormControl(null, [Validators.required]),
-        yoe: new FormControl(null, [Validators.required]),
-        startDate: new FormControl(null, [Validators.required]),
-        endDate: new FormControl(null, [Validators.required]),
+      this.formBuilder.group({
+        companyName: this.formBuilder.control(null, [Validators.required]),
+        position: this.formBuilder.control(null, [Validators.required]),
+        yoe: this.formBuilder.control(null, [Validators.required]),
+        startDate: this.formBuilder.control(null, [Validators.required]),
+        endDate: this.formBuilder.control(null, [Validators.required]),
       })
     );
 
