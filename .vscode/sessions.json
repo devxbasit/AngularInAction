@@ -18,18 +18,6 @@
           "commands": [
             ""
           ]
-        },
-        {
-          "name": "Angular:T3",
-          "commands": [
-            ""
-          ]
-        },
-        {
-          "name": "Angular:T4",
-          "commands": [
-            ""
-          ]
         }
       ]
     ],
@@ -43,12 +31,6 @@
         },
         {
           "name": "DotNetCore:T2",
-          "commands": [
-            ""
-          ]
-        },
-        {
-          "name": "DotNetCore:T3",
           "commands": [
             ""
           ]
