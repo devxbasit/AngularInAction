@@ -1,0 +1,17 @@
+<h1>Note Taking App</h1>
+
+
+<p>Add New Note</p>
+
+<form [formGroup]="noteForm" (ngSubmit)="addNote()">
+    <div>
+        <label for="">Title</label>
+        <input formControlName="title" type=" text" placeholder="Enter Title...">
+    </div>
+
+    <div>
+        <label for="">Content</label>
+        <input formControlName="content" type="text" placeholder="Enter Content...">
+    </div>
+    <input type="submit" [disabled]="noteForm.status.toLowerCase() === 'invalid'">
+</form>

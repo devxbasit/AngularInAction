@@ -1,0 +1,9 @@
+<div [ngStyle]="{border: '1px solid red'}" *ngFor="let note of notes; let i = index">
+
+    <p>{{note.id}}</p>
+    <p>{{note.title}}</p>
+    <p>{{note.content}}</p>
+
+    <button (click)="editNote()">Edit Note</button>
+    <button (click)="deleteNote()">Delete Note</button>
+</div>
