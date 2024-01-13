@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { INote } from '../../interfaces/inote';
 import { CommonModule, NgIfContext } from '@angular/common';
 import { NoteService } from '../../services/note.service';
@@ -12,6 +12,7 @@ import { NoteService } from '../../services/note.service';
 })
 export class NoteListComponent implements OnInit {
   notes: INote[] = [];
+  @Output() selectedNote = new EventEmitter<INote>();
 
   constructor(private _notesService: NoteService) {}
 
@@ -21,7 +22,11 @@ export class NoteListComponent implements OnInit {
     });
   }
 
-  editNote(): void {}
+  editNote(note: INote): void {
+    this.selectedNote.emit(note);
+  }
 
-  deleteNote(): void {}
+  deleteNote(noteId: number): void {
+    this._notesService.deleteNote(noteId);
+  }
 }

@@ -1,2 +1,2 @@
-<app-note-form></app-note-form>
-<app-note-list></app-note-list>
+<app-note-form [selectedNote]="selectedNote"></app-note-form>
+<app-note-list (selectedNote)="editNote($event)"></app-note-list>

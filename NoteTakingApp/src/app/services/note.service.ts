@@ -24,4 +24,19 @@ export class NoteService implements OnInit {
   getNotesObservable(): Observable<INote[]> {
     return this.notesSubject.asObservable();
   }
+
+  deleteNote(noteId: number): void {
+    this.notes = this.notes.filter((note) => note.id !== noteId);
+    this.notesSubject.next(this.notes);
+  }
+
+  updateNote(updatedNote: INote) {
+    debugger;
+    const index = this.notes.findIndex((note) => note.id === updatedNote.id);
+
+    if (index !== -1) {
+      this.notes[index] = updatedNote;
+      this.notesSubject.next(this.notes);
+    }
+  }
 }

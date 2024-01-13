@@ -4,6 +4,6 @@
     <p>{{note.title}}</p>
     <p>{{note.content}}</p>
 
-    <button (click)="editNote()">Edit Note</button>
-    <button (click)="deleteNote()">Delete Note</button>
+    <button (click)="editNote(note)">Edit Note</button>
+    <button (click)="deleteNote(note.id)">Delete Note</button>
 </div>
