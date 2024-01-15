@@ -1,0 +1,8 @@
+<br>
+<br>
+<br>
+<br>
+<div>
+  <input ngClass="form-control" [(ngModel)]="searchText" type="text" placeholder="Type here to search...">
+  <button [ngClass]="{btn:true,'btn-success': searchText, 'btn-danger': !searchText}">Search</button>
+</div>
