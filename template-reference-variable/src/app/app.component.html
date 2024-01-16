@@ -1,2 +1,7 @@
 <input type="text" #addUsername (keyup)="showName(addUsername.value)" />
-<p>{{ name }}</p>
+
+
+
+<app-product-list #productList></app-product-list>
+
+<app-product-detail [selectedProduct]="productList.selectedProduct"></app-product-detail>

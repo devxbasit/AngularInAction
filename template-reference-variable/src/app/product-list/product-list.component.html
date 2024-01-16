@@ -1,0 +1,7 @@
+<div *ngFor="let product of products" (click)="setSelectedProduct(product)">
+    <div [style.border]="'1px solid red'">
+        #: <label for="">{{product.productId}}</label>
+        name: <label for="">{{product.name}}</label>
+        price: <label for="">{{product.price}}</label>
+    </div>
+</div>
