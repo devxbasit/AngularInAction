@@ -13,6 +13,7 @@ var componentCount = 0;
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
+  addedToCart: boolean = false;
   title = 'ngTemplate';
   isUserLoggedIn: boolean = true;
   books: string[] = ['C# in Depth', 'C# in Action'];

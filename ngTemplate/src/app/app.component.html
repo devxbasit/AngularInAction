@@ -1,3 +1,35 @@
+<button *ngIf="addedToCart; else removeFromCartBtn">Add To Cart</button>
+
+<ng-template #removeFromCartBtn let-data>
+  <button>Remove From Cart</button>
+</ng-template>
+
+<hr>
+
+<div *ngTemplateOutlet="removeFromCartBtn"></div>
+<ng-container *ngTemplateOutlet="removeFromCartBtn"></ng-container>
+<hr>
+
+
+
+
+<ng-template #userTemplate let-data let-message='message'>
+  <p>{{data.name}}</p>
+  <p>{{data.age}}</p>
+  <p>{{data.address}}</p>
+  <p>{{message}}</p>
+</ng-template>
+
+<ng-container
+  *ngTemplateOutlet="userTemplate; context: {$implicit: {name:'basit', age: 10, address: 'Ukraine'}, message: 'secret message here'}">
+</ng-container>
+
+
+
+
+
+
+
 <button (click)="toggleFloatingButton()"> toggle floating button</button>
 <br />
 

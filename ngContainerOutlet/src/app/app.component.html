@@ -1,9 +1,7 @@
 <header>
   <h2>Header</h2>
-  <ng-container *ngTemplateOutlet="brandTemplate; context: brandContextInfo"></ng-container>
+  <ng-container *ngTemplateOutlet="brandTemplate; context: brandContext"></ng-container>
 </header>
-
-
 
 <br />
 <br />
@@ -12,7 +10,8 @@
 <section>
   <h2>Body</h2>
   <ng-container
-    *ngTemplateOutlet="brandTemplate; context: {brandName: '******************custom brand name', key1: 'value 1', subHeading:'*******dummy sub heading'}"></ng-container>
+    *ngTemplateOutlet="brandTemplate; context: {$implicit: {'brand-name': 'Puma', 'heading': 'Puma Heading'}}">
+  </ng-container>
 </section>
 
 
@@ -22,15 +21,16 @@
 <footer>
   <h2>Footer</h2>
 
-  <ng-container *ngTemplateOutlet="brandTemplate; context:brandContextInfo"></ng-container>
+  <ng-container *ngTemplateOutlet="brandTemplate; context:brandContext"></ng-container>
   <p>Footer note here &copy; 2023</p>
 </footer>
 
-<ng-template #brandTemplate let-data let-brand="brandName" let-heading="subHeading">
+<ng-template #brandTemplate let-data let-description="description">
   <div>
     <img src="../assets/logo.jpg" alt="">
-    <p class="brand-name"><strong>{{brand}}</strong></p>
-    <p class="brand-sub-heading">{{heading}}</p>
+    <p class="brand-name"><strong>{{data['brand-name']}}</strong></p>
+    <p class="brand-sub-heading">{{data.heading}}</p>
+    <p class="brand-sub-heading">{{description}}</p>
   </div>
 </ng-template>
 

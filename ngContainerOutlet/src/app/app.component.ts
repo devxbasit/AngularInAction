@@ -11,15 +11,12 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'ngContainerOutlet';
-  brandContextInfo = {
-    brandName: 'Brand Name',
-    subHeading: 'sub heading here',
+  brandContext = {
+    $implicit: {
+      'brand-name': 'Addidas',
+      heading: 'Wear it to feel it',
+    },
+
+    description: 'Addidas Description here',
   };
-
-  // see also $implicit
-
-  // brandContextInfo = {
-  //   $implicit: 'Brand Name',
-  //   subHeading: 'sub heading here',
-  // };
 }
