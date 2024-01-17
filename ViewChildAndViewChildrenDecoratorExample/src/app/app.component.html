@@ -1,8 +1,12 @@
 <input type="text" #searchBox>
 <input type="text" #searchBox>
 
-<app-counter></app-counter>
-<app-counter></app-counter>
+<app-counter>
+    <p #projectedElement>Hello Content Projection</p>
+</app-counter>
+<app-counter>
+    <p #projectedElement>Hello Content Projection</p>
+</app-counter>
 
 
 <button (click)="inc()">increment</button>

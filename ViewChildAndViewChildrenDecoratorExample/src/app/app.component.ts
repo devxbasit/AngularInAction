@@ -14,6 +14,8 @@ import { CounterComponent } from './counter/counter.component';
   styleUrl: './app.component.scss',
 })
 export class AppComponent implements AfterViewInit {
+  // see also - ContentChild() & ContentChildren()
+
   title = 'ViewChildAndViewChildrenDecoratorExample';
 
   @ViewChild('searchBox') searchBox: ElementRef;
@@ -22,6 +24,8 @@ export class AppComponent implements AfterViewInit {
   @ViewChild(CounterComponent) counter: CounterComponent;
   @ViewChildren(CounterComponent) counters: QueryList<CounterComponent>;
 
+  @ViewChild('projectedElement') projectedElement: ElementRef;
+
   ngAfterViewInit(): void {
     this.searchBox.nativeElement.value = 'hello';
 
@@ -29,6 +33,9 @@ export class AppComponent implements AfterViewInit {
       el.nativeElement.style.border = '2px solid red';
       el.nativeElement.value += ' #World#';
     });
+
+    console.log('project element -> ');
+    console.log(this.projectedElement);
   }
 
   inc() {
