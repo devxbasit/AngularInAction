@@ -1,0 +1,16 @@
+.active {
+  background-color: pink;
+  padding: 10px;
+}
+
+.text-bold {
+  font-weight: bolder;
+}
+
+.border-red {
+  border: 2px solid red;
+}
+
+.border-blue {
+  border: 2px solid blue;
+}

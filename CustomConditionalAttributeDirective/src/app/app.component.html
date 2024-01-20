@@ -1,0 +1,7 @@
+<ng-container *ngFor="let product of products">
+
+  <div [disabled]="product.isInStock">
+    <p>{{product.name}}</p>
+  </div>
+
+</ng-container>
