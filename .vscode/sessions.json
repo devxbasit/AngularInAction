@@ -10,7 +10,7 @@
         {
           "name": "Angular:T1",
           "commands": [
-            "ng serve -o"
+            "ng serve"
           ]
         },
         {
