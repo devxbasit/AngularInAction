@@ -1,0 +1,17 @@
+<p>Courses</p>
+
+<div
+  [ngStyle]="{
+    display: 'inline-block',
+    width: '300px',
+    border: '1px solid red'
+  }"
+  *ngFor="let course of courses"
+>
+  <p>#{{ course.courseId }}</p>
+  <p>{{ course.name }}</p>
+  <p>{{ course.price }}</p>
+  <button class="btn btn-info" (click)="goToCourseDetails(course.courseId)">
+    Click for more details
+  </button>
+</div>

@@ -1,0 +1,21 @@
+<button class="btn btn-danger" (click)="backToCourses()">
+  Back to courses
+</button>
+<div>
+  <p>{{ selectedCourse.courseId }}</p>
+  <p>{{ selectedCourse.name }}</p>
+  <p>{{ selectedCourse.price }}</p>
+  <button class="btn btn-success" (click)="checkout()">
+    Buy Course Now / checkout
+  </button>
+</div>
+
+<button
+  [disabled]="selectedCourse.courseId <= 0"
+  [routerLink]="'../' + (selectedCourse.courseId - 1)"
+>
+  Previous Course
+</button>
+<button [routerLink]="'../' + (selectedCourse.courseId + 1)">
+  Previous Course
+</button>

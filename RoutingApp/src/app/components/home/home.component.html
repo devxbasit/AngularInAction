@@ -1,0 +1,41 @@
+<ul>
+  <li><a routerLink="/" fragment="fragment1">fragment 1</a></li>
+  <li><a routerLink="/" fragment="fragment2">fragment 2</a></li>
+  <li><a routerLink="/" fragment="fragment3">fragment 3</a></li>
+</ul>
+
+<div id="fragment1" [ngStyle]="{ border: '2px solid green', height: '900px' }">
+  fragment 1 content
+  <div>
+    <input
+      class="form-control"
+      type="text"
+      placeholder="Search for course here..."
+      #searchBox
+    />
+
+    <button class="btn btn-success" (click)="searchCourse(searchBox.value)">
+      Search Course
+    </button>
+
+    <!-- <button
+      class="btn btn-primary"
+      routerLink="/courses"
+      [queryParams]="{ search: 'Angular' }"
+    >
+      Search Course (hardcoded value)
+    </button> -->
+  </div>
+</div>
+
+<div id="fragment2" [ngStyle]="{ border: '2px solid green', height: '900px' }">
+  fragment 2 content
+
+  <button class="btn btn-primary btn-sm" (click)="gotoNotificationSettings()">
+    GoTo Notification Settings
+  </button>
+</div>
+
+<div id="fragment3" [ngStyle]="{ border: '2px solid green', height: '900px' }">
+  fragment 3 content
+</div>

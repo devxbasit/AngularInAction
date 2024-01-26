@@ -1,0 +1,25 @@
+<h2>
+  This is settings Page
+  <button class="btn btn-success btn-sm" (click)="goToNotificationSettings()">
+    Go To Notification Settings
+  </button>
+</h2>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<div class="row">
+  <div class="col-3">
+    <ul>
+      <li><a routerLink="account">Account</a></li>
+      <li><a routerLink="appearance">Appearance</a></li>
+      <li><a routerLink="notification">Notification</a></li>
+    </ul>
+  </div>
+  <div class="col-9">
+    <router-outlet> </router-outlet>
+  </div>
+</div>

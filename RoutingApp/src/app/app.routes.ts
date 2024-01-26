@@ -1,42 +1,70 @@
 import { Routes } from '@angular/router';
-import { NoteComponent } from './note/note.component';
-import { NotesComponent } from './notes/notes.component';
-import { NotFoundComponent } from './not-found/not-found.component';
-import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
-import { AboutProjectsComponent } from './about-projects/about-projects.component';
-import { AboutSponsorsComponent } from './about-sponsors/about-sponsors.component';
+import { HomeComponent } from './components/home/home.component';
+import { AccountSettingsComponent } from './components/account-settings/account-settings.component';
+import { NotificationSettingsComponent } from './components/notification-settings/notification-settings.component';
+import { AppearanceSettingsComponent } from './components/appearance-settings/appearance-settings.component';
+import { NotFound404Component } from './components/not-found-404/not-found-404.component';
+import { SettingsComponent } from './components/settings/settings.component';
+import { CoursesComponent } from './components/courses/courses.component';
+import { CourseComponent } from './components/courses/course/course.component';
+import { LoginComponent } from './components/login/login.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { AuthguardService } from './services/authguard.service';
+import { checkoutAuthGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/notes', pathMatch: 'full' },
-  { path: 'payments', redirectTo: '/notes', pathMatch: 'full' },
-
-  { path: 'home', title: 'home', component: HomeComponent },
-  { path: 'notes/:noteId', title: 'note with id', component: NoteComponent },
-  { path: 'notes', title: 'note', component: NotesComponent },
-  { path: 'notes/:noteId', title: 'note with id', component: NoteComponent },
   {
-    path: 'about',
-    title: 'about',
-    component: AboutComponent,
+    path: '',
+    component: HomeComponent,
+    title: 'Routing App In Action',
+  },
+  { path: 'login', component: LoginComponent },
 
+  {
+    path: 'home',
+    redirectTo: '',
+    pathMatch: 'full',
+  },
+  {
+    path: 'courses',
+    component: CoursesComponent,
+  },
+  {
+    path: 'courses/course/:courseId',
+    component: CourseComponent,
+  },
+  // {
+  //   path: 'checkout',
+  //   component: CheckoutComponent,
+  //   canActivate: [AuthguardService],
+  // },
+  {
+    path: 'checkout',
+    component: CheckoutComponent,
+    canActivate: [checkoutAuthGuard],
+  },
+  { path: 'payments', redirectTo: '/', pathMatch: 'full' },
+  {
+    path: 'settings',
+    component: SettingsComponent,
     children: [
       {
-        path: 'about-projects',
-        title: 'projects',
-        component: AboutProjectsComponent,
+        path: 'account',
+        component: AccountSettingsComponent,
       },
       {
-        path: 'about-sponsors',
-        title: 'sponsors',
-        component: AboutSponsorsComponent,
+        path: 'notification',
+        component: NotificationSettingsComponent,
+      },
+      {
+        path: 'appearance',
+        component: AppearanceSettingsComponent,
       },
     ],
   },
-
   {
     path: '**',
-    title: '404 - page not found',
-    component: NotFoundComponent,
+    component: NotFound404Component,
+    title: '404 - Page Not Found!',
   },
 ];

@@ -1,1 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+.active-link {
+  border-bottom: 2px solid green !important;
+}
+
+h1 {
+  border: 2px solid red;
+  padding: 10px;
+  text-align: center;
+}
