@@ -3,3 +3,16 @@
   width: 1500px;
   margin: auto;
 }
+
+#loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #00000077;
+  background-repeat: no-repeat;
+  //background-size: 3%;
+  background-position: 50% 50%;
+  background-image: url("../assets/loading.gif");
+}

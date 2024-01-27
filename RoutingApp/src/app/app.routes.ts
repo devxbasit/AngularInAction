@@ -10,7 +10,7 @@ import { CourseComponent } from './components/courses/course/course.component';
 import { LoginComponent } from './components/login/login.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { AuthguardService } from './services/authguard.service';
-import { checkoutAuthGuard } from './guards/auth.guard';
+import { CourseFormComponent } from './components/course-form/course-form.component';
 
 export const routes: Routes = [
   {
@@ -19,7 +19,6 @@ export const routes: Routes = [
     title: 'Routing App In Action',
   },
   { path: 'login', component: LoginComponent },
-
   {
     path: 'home',
     redirectTo: '',
@@ -27,38 +26,56 @@ export const routes: Routes = [
   },
   {
     path: 'courses',
+    canActivate: [
+      () => {
+        return true;
+      },
+    ],
     component: CoursesComponent,
+    resolve: { someData: AuthguardService },
+    data: { staticData: 'static Data' },
   },
   {
-    path: 'courses/course/:courseId',
-    component: CourseComponent,
-  },
-  // {
-  //   path: 'checkout',
-  //   component: CheckoutComponent,
-  //   canActivate: [AuthguardService],
-  // },
-  {
-    path: 'checkout',
-    component: CheckoutComponent,
-    canActivate: [checkoutAuthGuard],
-  },
-  { path: 'payments', redirectTo: '/', pathMatch: 'full' },
-  {
-    path: 'settings',
-    component: SettingsComponent,
+    path: 'courses',
     children: [
       {
-        path: 'account',
-        component: AccountSettingsComponent,
+        path: 'course/:courseId',
+        component: CourseComponent,
+      },
+    ],
+  },
+  {
+    path: '',
+    canActivate: [AuthguardService],
+    canActivateChild: [AuthguardService],
+    children: [
+      {
+        path: 'add-course',
+        component: CourseFormComponent,
+        canDeactivate: [AuthguardService],
       },
       {
-        path: 'notification',
-        component: NotificationSettingsComponent,
+        path: 'checkout',
+        component: CheckoutComponent,
       },
+      { path: 'payments', redirectTo: '/', pathMatch: 'full' },
       {
-        path: 'appearance',
-        component: AppearanceSettingsComponent,
+        path: 'settings',
+        component: SettingsComponent,
+        children: [
+          {
+            path: 'account',
+            component: AccountSettingsComponent,
+          },
+          {
+            path: 'notification',
+            component: NotificationSettingsComponent,
+          },
+          {
+            path: 'appearance',
+            component: AppearanceSettingsComponent,
+          },
+        ],
       },
     ],
   },

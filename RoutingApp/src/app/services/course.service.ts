@@ -11,15 +11,18 @@ export class CourseService {
     new BehaviorSubject<Course[]>([]);
 
   constructor() {
-    this._courses = [
-      { courseId: 1, name: 'Angular In Depth', price: 1000 },
-      { courseId: 2, name: 'JavaScript In Depth', price: 2000 },
-      { courseId: 3, name: 'Python In Depth', price: 3000 },
-      { courseId: 4, name: 'CSS 3 In Depth', price: 4000 },
-      { courseId: 5, name: 'React In Depth', price: 5000 },
-      { courseId: 6, name: 'Java In Depth', price: 6000 },
-    ];
-    this._coursesBehaviorSubject.next(this._courses);
+    setTimeout(() => {
+      this._courses = [
+        { courseId: 1, name: 'Angular In Depth', price: 1000 },
+        { courseId: 2, name: 'JavaScript In Depth', price: 2000 },
+        { courseId: 3, name: 'Python In Depth', price: 3000 },
+        { courseId: 4, name: 'CSS 3 In Depth', price: 4000 },
+        { courseId: 5, name: 'React In Depth', price: 5000 },
+        { courseId: 6, name: 'Java In Depth', price: 6000 },
+      ];
+
+      this._coursesBehaviorSubject.next(this._courses);
+    }, 6000);
   }
 
   getCoursesObs() {

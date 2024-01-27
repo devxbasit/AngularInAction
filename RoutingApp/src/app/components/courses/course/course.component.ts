@@ -38,10 +38,4 @@ export class CourseComponent implements OnInit, OnDestroy {
     // Dynamic Back Navigation with Browser History
     this._location.back();
   }
-
-  checkout() {
-    this._router.navigate(['/checkout'], {
-      queryParams: { courseId: this.selectedCourse.courseId },
-    });
-  }
 }

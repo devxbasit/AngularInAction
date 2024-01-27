@@ -5,7 +5,11 @@
   <p>{{ selectedCourse.courseId }}</p>
   <p>{{ selectedCourse.name }}</p>
   <p>{{ selectedCourse.price }}</p>
-  <button class="btn btn-success" (click)="checkout()">
+  <button
+    class="btn btn-success"
+    routerLink="/checkout"
+    [state]="selectedCourse"
+  >
     Buy Course Now / checkout
   </button>
 </div>

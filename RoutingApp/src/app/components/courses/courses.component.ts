@@ -15,12 +15,14 @@ import { CourseService } from '../../services/course.service';
 export class CoursesComponent implements OnInit, OnDestroy {
   private _courseService: CourseService = inject(CourseService);
   private _courseServiceSubscription: Subscription;
+  private _router: Router = inject(Router);
+  private _activeRoute: ActivatedRoute = inject(ActivatedRoute);
   courses: Course[] = [];
 
-  router: Router = inject(Router);
-  activeRoute: ActivatedRoute = inject(ActivatedRoute);
-
   ngOnInit(): void {
+    alert(this._activeRoute.snapshot.data['someData']);
+    alert(this._activeRoute.snapshot.data['staticData']);
+
     this._courseServiceSubscription = this._courseService
       .getCoursesObs()
       .subscribe((data) => {
@@ -29,11 +31,11 @@ export class CoursesComponent implements OnInit, OnDestroy {
   }
 
   goToCourseDetails(courseId: number): void {
-    this.router.navigate(['course', courseId], {
-      relativeTo: this.activeRoute,
+    this._router.navigate(['course', courseId], {
+      relativeTo: this._activeRoute,
     });
   }
   ngOnDestroy(): void {
-    this._courseServiceSubscription.unsubscribe();
+    this._courseServiceSubscription?.unsubscribe();
   }
 }
