@@ -9,18 +9,15 @@ import { User } from './interfaces/user';
   standalone: true,
   imports: [CommonModule, RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit {
-
-  usersList: User[] = []
+  usersList: User[] = [];
   title = 'ApiIntegrationWithHttpClientExample';
 
-  constructor(private userService: UsersService) {
-  }
+  constructor(private userService: UsersService) {}
 
   ngOnInit(): void {
-
     this.userService.getUsers().subscribe({
       next: (response: User[]) => {
         console.log(response);
@@ -31,8 +28,7 @@ export class AppComponent implements OnInit {
       },
       complete() {
         console.log('request completed');
-
-      }
-    })
+      },
+    });
   }
 }

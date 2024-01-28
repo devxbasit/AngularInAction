@@ -1,1 +1,29 @@
-<p>{{name | greet : "2" : "Hello"}}</p>
+<p>{{ name | greet : "2" : "Hello" }}</p>
+
+<div>
+  <label for="">Filter By</label>
+  <select [(ngModel)]="filterBy">
+    <option value="">All</option>
+    <option value="m">Male</option>
+    <option value="f">Female</option>
+  </select>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Gender</th>
+      <th>Percentage</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let student of students | filterStudent : filterBy">
+      <td>{{ student.name }}</td>
+      <td>{{ student.age }}</td>
+      <td>{{ student.gender }}</td>
+      <td>{{ student.percentage | percentage }}</td>
+    </tr>
+  </tbody>
+</table>
