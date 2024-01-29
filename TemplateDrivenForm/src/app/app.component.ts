@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { NgForm } from '@angular/forms';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
+import { ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -12,22 +12,22 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'TemplateDrivenForm';
+  @ViewChild('userRegistrationForm') registrationForm: NgForm;
+  genders = [
+    { value: 'm', label: 'Male' },
+    { value: 'f', label: 'Female' },
+    { value: 'o', label: 'other' },
+  ];
 
-  user: { name: string; email: string } = {
-    name: '',
-    email: '',
-  };
+  generateUserName() {
+    const username =
+      this.registrationForm.value.firstName + this.registrationForm.value.email;
 
-  isValidEmail(): boolean {
-    const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-    return emailRegex.test(this.user.email);
+    //this.registrationForm.controls['username'].setValue(username);
+
+    this.registrationForm.form.patchValue({ username: username });
   }
-
-  addUser(addUserForm: NgForm) {
-    debugger;
-    if (!addUserForm.valid) return;
-
-    console.log(addUserForm.value);
+  addUser() {
+    console.log(this.registrationForm);
   }
 }

@@ -1,13 +1,175 @@
-<form #addUserForm="ngForm" (ngSubmit)="addUser(addUserForm)">
-  <div>
-    <label>Enter Name</label>
-    <input type="text" name="name" [(ngModel)]="user.name">
-  </div>
-  <div>
-    <label>Enter Email</label>
-    <input type="email" name="email" [(ngModel)]="user.email">
-  </div>
+<div class="container mt-5">
+  <form (ngSubmit)="addUser()" #userRegistrationForm="ngForm">
+    <div class="row">
+      <div class="col-6">
+        <label class="form-label">Name</label>
+        <input
+          ngModel
+          required
+          class="form-control"
+          type="text"
+          name="firstName"
+          #name="ngModel"
+        />
+        <small *ngIf="!name.valid && name.touched"
+          >* Required/Invalid Value</small
+        >
+      </div>
+      <div class="col-6">
+        <label class="form-label">Email</label>
+        <input
+          ngModel
+          required
+          email
+          class="form-control"
+          type="email"
+          name="email"
+          #email="ngModel"
+        />
+        <small *ngIf="!email.valid && email.touched"
+          >* Required/Invalid Value</small
+        >
+      </div>
+      <div class="col-6">
+        <label class="form-label">Phone Number</label>
+        <input
+          ngModel
+          required
+          class="form-control"
+          type="text"
+          name="phoneNumber"
+          #phoneNumber="ngModel"
+        />
+        <small *ngIf="!phoneNumber.valid && phoneNumber.touched"
+          >* Required/Invalid Value</small
+        >
+      </div>
+      <div class="col-6">
+        <label class="form-label">DOB</label>
+        <input
+          ngModel
+          required
+          class="form-control"
+          type="date"
+          name="dob"
+          #dob="ngModel"
+        />
+        <small *ngIf="!dob.valid && dob.touched"
+          >* Required/Invalid Value</small
+        >
+      </div>
+    </div>
 
-  <button type="submit" [disabled]="addUserForm.invalid || !isValidEmail()">Submit</button>
+    <div class="row">
+      <div class="col-6">
+        <label class="form-label">Username</label>
+        <input
+          ngModel
+          required
+          class="form-control"
+          type="text"
+          name="username"
+        />
+        <Button
+          type="button"
+          class="btn btn-primary"
+          (click)="generateUserName()"
+          >Generate Username</Button
+        >
+      </div>
+    </div>
 
-</form>
+    <div class="row">
+      <label class="form-label">Gender</label>
+
+      <div class="col-12">
+        <ng-container *ngFor="let gender of genders">
+          <div class="form-check form-check-inline">
+            <input
+              ngModel
+              required
+              class="form-check-input"
+              type="radio"
+              name="gender"
+              value="{{ gender.value }}"
+            />
+            <label class="form-check-label">{{ gender.label }}</label>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+
+    <div ngModelGroup="address" #address="ngModelGroup">
+      <div class="row">
+        <div class="col-12">
+          <label class="form-label">Street</label>
+          <input
+            ngModel
+            required
+            class="form-control"
+            type="text"
+            name="street"
+          />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <label class="form-label">Country</label>
+          <select ngModel required class="form-control" name="country">
+            <option>Select Country</option>
+            <option value="palestine">Palestine</option>
+            <option value="yemen">Yemen</option>
+          </select>
+        </div>
+        <div class="col-6">
+          <label class="form-label">City</label>
+          <input
+            ngModel
+            required
+            class="form-control"
+            type="text"
+            name="city"
+          />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6">
+          <label class="form-label">Region</label>
+          <input
+            ngModel
+            required
+            class="form-control"
+            type="text"
+            name="region"
+          />
+        </div>
+        <div class="col-6">
+          <label class="form-label">PostalCode</label>
+          <input
+            ngModel
+            required
+            class="form-control"
+            type="text"
+            name="postalCode"
+          />
+        </div>
+      </div>
+    </div>
+
+    <small *ngIf="!address.valid && address.touched"
+      >*Some of the address fields does not contain a valid value</small
+    >
+
+    <div class="row">
+      <div class="form-check">
+        <label class="form-check-label" for="">
+          * I Agree Terms &amp; conditions
+        </label>
+        <input required class="form-check-input" type="checkbox" />
+      </div>
+    </div>
+
+    <button class="btn btn-primary" type="submit">Submit</button>
+  </form>
+</div>
