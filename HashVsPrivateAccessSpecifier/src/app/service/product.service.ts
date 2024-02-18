@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class ProductService {
-  host: string = 'host';
+  somePublicProperty: string = 'SomeValue';
 
   // private keyword is part of TypeScript, not JavaScript. That means that the private accessibility is only enforced during development,
   // as part of type checking, and during compilation.

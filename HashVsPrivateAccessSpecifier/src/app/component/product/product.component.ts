@@ -16,6 +16,7 @@ export class ProductComponent implements OnInit {
     for (let p in this.productService) {
       console.log(`Properties of productService: ${p}`);
     }
+    console.log(`keys: ${Object.keys(this.productService)}`);
 
     console.log('*********Url After Attack');
 
