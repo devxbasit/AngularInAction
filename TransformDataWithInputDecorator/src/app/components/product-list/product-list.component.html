@@ -1,0 +1,10 @@
+<ng-container *ngFor="let product of products">
+  <app-product-detail
+    [product]="product"
+    [displayDetail]="true"
+    includeImage
+    imageWidth="200"
+    imageTitle="Hello"
+    availability="2024-02-22"
+  />
+</ng-container>

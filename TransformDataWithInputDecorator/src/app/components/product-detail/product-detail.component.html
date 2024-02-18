@@ -1,0 +1,12 @@
+<p>page title : {{ pageTitle }}</p>
+
+<p>image title: {{ imageTitle }}</p>
+
+<div *ngIf="product && detail">
+  <p>product id: {{ product.productId }}</p>
+  <p>product name: {{ product.productName }}</p>
+  <p>product price: {{ product.price }}</p>
+  <p>include image: {{ includeImage }}</p>
+  <p>availability: {{ availability | date : "short" }}</p>
+</div>
+<hr />
