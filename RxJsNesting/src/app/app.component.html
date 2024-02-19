@@ -1,0 +1,7 @@
+<input type="text" #city />
+
+<button (click)="getCityDetails(city.value)">Get City Data</button>
+
+<div *ngIf="city$">
+  {{ city$ | async | json }}
+</div>

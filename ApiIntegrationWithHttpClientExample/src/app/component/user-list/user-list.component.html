@@ -1,0 +1,13 @@
+<div
+  [style.width.px]="300"
+  [ngStyle]="{ display: 'inline-block', border: '1px solid red' }"
+  *ngFor="let user of users$ | async"
+>
+  <p>id: {{ user.id }}</p>
+  <p>id: {{ user.name }}</p>
+  <p>id: {{ user.username }}</p>
+  <p>id: {{ user.email }}</p>
+  <button>Edit</button>
+</div>
+
+<p *ngIf="users$ | async as userList">{{ userList | json }}</p>

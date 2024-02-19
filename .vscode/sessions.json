@@ -2,19 +2,23 @@
   "$schema": "https://cdn.statically.io/gh/nguyenngoclongdev/cdn/main/schema/v10/terminal-keeper.json",
   "theme": "tribe",
   "active": "Angular",
-  "activateOnStartup": true,
+  "activateOnStartup": false,
   "keepExistingTerminals": false,
   "sessions": {
     "Angular": [
       [
         {
           "name": "Angular:T1",
-          "commands": ["ng serve"],
+          "commands": [
+            "ng serve"
+          ],
           "autoExecuteCommands": true
         },
         {
           "name": "Angular:T2",
-          "commands": ["ng g c component/"]
+          "commands": [
+            "ng g c component/"
+          ]
         }
       ]
     ],
@@ -22,11 +26,15 @@
       [
         {
           "name": "DotNetCore:T1",
-          "commands": [""]
+          "commands": [
+            ""
+          ]
         },
         {
           "name": "DotNetCore:T2",
-          "commands": [""]
+          "commands": [
+            ""
+          ]
         }
       ]
     ],
@@ -34,77 +42,109 @@
       [
         {
           "name": "docker:ros",
-          "commands": [""]
+          "commands": [
+            ""
+          ]
         },
         {
           "name": "docker:k8s",
-          "commands": [""]
+          "commands": [
+            ""
+          ]
         },
         {
           "name": "docker:nats",
-          "commands": [""]
+          "commands": [
+            ""
+          ]
         },
         {
           "name": "docker:fleet",
-          "commands": [""]
+          "commands": [
+            ""
+          ]
         }
       ],
       [
         {
           "name": "db:postgre",
-          "commands": [""]
+          "commands": [
+            ""
+          ]
         },
         {
           "name": "db:redis",
-          "commands": [""]
+          "commands": [
+            ""
+          ]
         },
         {
           "name": "db:hyper",
-          "commands": [""]
+          "commands": [
+            ""
+          ]
         },
         {
           "name": "db:mysql",
-          "commands": [""]
+          "commands": [
+            ""
+          ]
         }
       ],
       [
         {
           "name": "api:delivery",
-          "commands": [""]
+          "commands": [
+            ""
+          ]
         },
         {
           "name": "api:feedback",
-          "commands": [""]
+          "commands": [
+            ""
+          ]
         },
         {
           "name": "api:service",
-          "commands": [""]
+          "commands": [
+            ""
+          ]
         }
       ],
       {
         "name": "test",
-        "commands": [""]
+        "commands": [
+          ""
+        ]
       },
       {
         "name": "debug",
-        "commands": [""]
+        "commands": [
+          ""
+        ]
       }
     ],
     "saved-session-1": [
       {
         "name": "connect",
-        "commands": [""]
+        "commands": [
+          ""
+        ]
       }
     ],
     "saved-session-2": [
       [
         {
           "name": "api",
-          "commands": [""]
+          "commands": [
+            ""
+          ]
         },
         {
           "name": "log",
-          "commands": [""]
+          "commands": [
+            ""
+          ]
         }
       ]
     ]
