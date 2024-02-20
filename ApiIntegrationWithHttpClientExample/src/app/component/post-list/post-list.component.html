@@ -1,0 +1,19 @@
+<div class="row row-cols-2">
+  <div class="col-3">
+    <h2>Posts</h2>
+    <li class="link" *ngFor="let post of posts$ | async">
+      Post {{ post.id }}
+      <span class="badge text-bg-primary" (click)="viewPostDetails(post.id)"
+        >click to view post</span
+      >
+    </li>
+  </div>
+  <div class="col">
+    <ng-container *ngIf="selectedPost$ | async as post">
+      <p>postId: {{ post.id }}</p>
+      <p>userId: {{ post.userId }}</p>
+      <p>title: {{ post.title }}</p>
+      <p>body: {{ post.body }}</p>
+    </ng-container>
+  </div>
+</div>

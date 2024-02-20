@@ -8,14 +8,17 @@ import { Post } from '../interfaces/post';
   providedIn: 'root',
 })
 export class UserService {
+  // RxJs Patterns - https://www.youtube.com/watch?v=vtCDRiG__D4
+
+  // Declarative data access pattern
   #getUserApiUrl: string = 'https://jsonplaceholder.typicode.com/users';
   #httpClient: HttpClient = inject(HttpClient);
   users$: Observable<User[]> = this.#httpClient.get<User[]>(
     this.#getUserApiUrl
   );
 
+  // Retrieve on Action Pattern
   #viewUserPostsApiUrl: string = 'https://jsonplaceholder.typicode.com/users';
-
   #userPostsStreamSubject: Subject<number> = new Subject<number>();
   #userPostsStreamObservable$: Observable<number> =
     this.#userPostsStreamSubject.asObservable();
@@ -28,7 +31,7 @@ export class UserService {
     )
   );
 
-  getUserPostsEvent(userId: number) {
+  userPostsEvent(userId: number) {
     this.#userPostsStreamSubject.next(userId);
   }
 }

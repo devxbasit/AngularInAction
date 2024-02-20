@@ -16,7 +16,7 @@ export class UserListComponent {
   users$ = this.userService.users$;
   userPosts$ = this.userService.userPost$;
 
-  getUserPostsEvent(userId: number) {
-    this.userService.getUserPostsEvent(userId);
+  getUserPosts(userId: number) {
+    this.userService.userPostsEvent(userId);
   }
 }
