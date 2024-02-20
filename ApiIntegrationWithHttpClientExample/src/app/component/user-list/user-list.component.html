@@ -7,7 +7,25 @@
   <p>id: {{ user.name }}</p>
   <p>id: {{ user.username }}</p>
   <p>id: {{ user.email }}</p>
-  <button>Edit</button>
+  <button (mouseover)="getUserPostsEvent(user.id)">
+    hover to see user posts
+  </button>
 </div>
 
+<hr />
+<hr />
+
+<div *ngIf="userPosts$">
+  <h1>Users posts</h1>
+
+  <div *ngFor="let post of userPosts$ | async">
+    <p>Post Id: {{ post.id }}</p>
+    <p>User Id: {{ post.userId }}</p>
+    <p>Title: {{ post.title }}</p>
+    <p>Body: {{ post.body }}</p>
+  </div>
+</div>
+
+<!-- 
 <p *ngIf="users$ | async as userList">{{ userList | json }}</p>
+<p *ngIf="userPosts$ | async as posts">{{ posts }}</p> -->

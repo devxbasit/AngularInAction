@@ -14,4 +14,9 @@ import { Observable } from 'rxjs';
 export class UserListComponent {
   userService: UserService = inject(UserService);
   users$ = this.userService.users$;
+  userPosts$ = this.userService.userPost$;
+
+  getUserPostsEvent(userId: number) {
+    this.userService.getUserPostsEvent(userId);
+  }
 }
