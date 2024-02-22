@@ -10,7 +10,6 @@ export class PostService {
   // RxJs Patterns - https://www.youtube.com/watch?v=vtCDRiG__D4
 
   // Shape On Action Pattern
-
   #httpClient: HttpClient = inject(HttpClient);
   posts$: Observable<Post[]> = this.#httpClient.get<Post[]>(
     `https://jsonplaceholder.typicode.com/posts`

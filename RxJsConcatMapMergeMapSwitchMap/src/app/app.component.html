@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col" *ngFor="let cat of cats$ | async">
+    <img (mouseover)="catHovered(cat.id)" src="{{cat.url}}" alt="" [style.height.px]="100"
+      [style.display]="'inline-block'">
+    <p>catId:{{cat.id}}</p>
+  </div>
+</div>
+
+<hr>
+
+<div class="row">
+  <div class="col-6" *ngIf="hoveredCat$ | async as cat">
+    <img src="{{cat.url}}" alt="" [style.height.px]="400" [style.display]="'inline-block'">
+    <p>catId:{{cat.id}}</p>
+  </div>
+</div>

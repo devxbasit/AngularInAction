@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { PostService } from '../../services/post.service';
 import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 import { Observable } from 'rxjs';
@@ -10,6 +10,7 @@ import { Post } from '../../interfaces/post';
   imports: [NgFor, NgIf, AsyncPipe],
   templateUrl: './post-list.component.html',
   styleUrl: './post-list.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PostListComponent {
   #postService: PostService = inject(PostService);
