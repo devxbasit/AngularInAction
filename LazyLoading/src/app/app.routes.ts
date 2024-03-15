@@ -12,10 +12,21 @@ export const routes: Routes = [
   },
   {
     path: 'about',
-    loadComponent: () =>
-      import('./components/about/about.component').then(
+    loadComponent: () => {
+      console.log('lazy loading about component')
+      const promise_typeOfImport = import('./components/about/about.component');
+      const promise_typeOfAboutComponent = promise_typeOfImport.then(
         (c) => c.AboutComponent
-      ),
+      );
+      return promise_typeOfAboutComponent
+    }
   },
+  // {
+  //   path: 'about',
+  //   loadComponent: () =>
+  //     import('./components/about/about.component').then(
+  //       (c) => c.AboutComponent
+  //     ),
+  // },
   { path: '**', component: NotFound404Component },
 ];

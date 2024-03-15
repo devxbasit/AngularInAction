@@ -1,0 +1,12 @@
+<input type="text" #username>
+<button (click)="userSearchAction(username.value)">search</button>
+
+<ng-container *ngIf="posts$">
+  <div *ngFor="let post of posts$ | async">
+    <p>postId: {{post.id}}</p>
+    <p>tile: {{post.title}}</p>
+    <p>userId: {{post.userId}}</p>
+    <p>category: {{post.category}}</p>
+    <hr />
+  </div>
+</ng-container>
