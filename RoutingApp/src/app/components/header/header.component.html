@@ -2,80 +2,64 @@
 <ul>
   <li><a href="login" routerLink="/login">login</a></li>
   <li>
-    <a href="login" routerLink="/login" [queryParams]="{ logout: true }"
-      >logout</a
-    >
+    <a href="login" routerLink="/login" [queryParams]="{ logout: true }">logout</a>
   </li>
 </ul>
 <nav class="navbar navbar-expand-lg">
   <ul class="navbar-nav">
     <li class="nav-item">
-      <a
-        class="nav-link"
-        routerLink="home"
-        routerLinkActive="active-link"
-        [routerLinkActiveOptions]="{ exact: true }"
-        >Home</a
-      >
+      <a class="nav-link" routerLink="home" routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{ exact: true }">Home</a>
     </li>
     <li class="nav-item">
-      <a
-        class="nav-link"
-        routerLink="settings"
-        routerLinkActive="active-link"
-        [routerLinkActiveOptions]="{ exact: false }"
-        >Settings</a
-      >
+      <a class="nav-link" routerLink="settings" routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{ exact: false }">Settings</a>
     </li>
     <li class="nav-item">
-      <a
-        class="nav-link"
-        routerLink="settings/notification"
-        routerLinkActive="active-link"
-        [routerLinkActiveOptions]="{ exact: true }"
-        >Notification Settings</a
-      >
+      <a class="nav-link" routerLink="settings/notification" routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{ exact: true }">Notification Settings</a>
     </li>
     <li class="nav-item">
-      <a
-        class="nav-link"
-        routerLink="add-course"
-        routerLinkActive="active-link"
-        [routerLinkActiveOptions]="{ exact: true }"
-        >Add Course</a
-      >
+      <a class="nav-link" routerLink="add-course" routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{ exact: true }">Add Course</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" routerLink="courses" routerLinkActive="active-link"
-        >Courses</a
-      >
+      <a class="nav-link" routerLink="courses" routerLinkActive="active-link">Courses</a>
     </li>
     <li class="nav-item">
-      <a
-        class="nav-link"
-        routerLink="courses/course/1"
-        routerLinkActive="active-link"
-        >Course 1</a
-      >
+      <a class="nav-link" routerLink="courses/course/1" routerLinkActive="active-link">Course 1</a>
     </li>
     <li class="nav-item">
-      <a
-        class="nav-link"
-        routerLink="broken"
-        routerLinkActive="active-link"
-        [routerLinkActiveOptions]="{ exact: true }"
-        >Broken Link(404)</a
-      >
+      <a class="nav-link" routerLink="broken" routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{ exact: true }">Broken Link(404)</a>
     </li>
     <li class="nav-item">
-      <a
-        class="nav-link"
-        routerLink="payments"
-        routerLinkActive="active-link"
-        [routerLinkActiveOptions]="{ exact: true }"
-        >Payments (Redirect)</a
-      >
+      <a class="nav-link" routerLink="payments" routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{ exact: true }">Payments (Redirect)</a>
     </li>
+
+
+
+    <li class="nav-item">
+      <a class="nav-link" routerLink="contact" routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{ exact: true }">Contact (lazy)</a>
+    </li>
+
+
+    <li class="nav-item">
+      <a class="nav-link" routerLink="profile" routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{ exact: true }">Profile (lazy)</a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" routerLink="profile/email" routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{ exact: true }">Profile>email (lazy)</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="profile/account" routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{ exact: true }">Profile>account (lazy)</a>
+    </li>
+
   </ul>
 </nav>
 

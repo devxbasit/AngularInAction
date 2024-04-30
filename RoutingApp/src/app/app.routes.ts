@@ -79,6 +79,21 @@ export const routes: Routes = [
       },
     ],
   },
+
+
+
+  // lazy loading single component
+  {
+    path: 'contact',
+    loadComponent: () => import('./components/contact/contact.component').then(c => c.ContactComponent)
+  },
+
+  // lazy loading 
+  {
+    path: 'profile',
+    loadChildren: () => import('./constants/profile.routes').then(r => r.PROFILE_ROUTES)
+  },
+
   {
     path: '**',
     component: NotFound404Component,

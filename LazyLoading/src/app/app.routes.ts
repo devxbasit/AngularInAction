@@ -28,5 +28,7 @@ export const routes: Routes = [
   //       (c) => c.AboutComponent
   //     ),
   // },
+
+  
   { path: '**', component: NotFound404Component },
 ];
