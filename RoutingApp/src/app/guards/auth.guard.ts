@@ -6,12 +6,13 @@ import {
 import { AuthService } from '../services/auth.service';
 import { inject } from '@angular/core';
 
-export function checkoutAuthGuard(
-  route: ActivatedRouteSnapshot,
-  state: RouterStateSnapshot
-): boolean {
+export function checkoutAuthGuard(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+
+
   const _router: Router = inject(Router);
   const _authService: AuthService = inject(AuthService);
+
+
   if (_authService.isAuthenticated()) {
     return true;
   } else {

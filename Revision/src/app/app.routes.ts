@@ -1,21 +1,35 @@
-import { Route, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { EmailSettingsComponent } from './components/email-settings/email-settings.component';
 import { AccountSettingsComponent } from './components/account-settings/account-settings.component';
-import { EmailSettingsLazyComponent } from './components/email-settings-lazy/email-settings-lazy.component';
-import { AccountSettingsLazyComponent } from './components/account-settings-lazy/account-settings-lazy.component';
+import { AuthGuardService } from './services/authguard.service.ts';
+import { UserComponent } from './components/user/user.component';
+import { NotFound404Component } from './components/not-found-404/not-found-404.component';
 
 export const routes: Routes = [
 
     { path: '', component: HomeComponent, pathMatch: 'full' },
     { path: 'home', redirectTo: '' },
     { path: 'contact', component: ContactComponent },
+    { path: 'user', component: UserComponent },
 
-    { path: 'products', loadComponent: () => import("./components/products/products.component").then(c => c.ProductsComponent) },
+    {
+        path: 'products',
+        loadComponent: () => import("./components/products/products.component").then(c => c.ProductsComponent),
+        canActivate: [AuthGuardService, () => true],
+        canActivateChild: [AuthGuardService, AuthGuardService],
+        canDeactivate: [AuthGuardService],
+        canLoad: [AuthGuardService],
+        resolve: { dataKey: AuthGuardService }
+
+    },
     { path: 'products/:productId', loadComponent: () => import("./components/product/product.component").then(c => c.ProductComponent) },
 
+
+
+    // eager loading component
 
     {
         path: 'settings', component: SettingsComponent,
@@ -39,7 +53,8 @@ export const routes: Routes = [
 
 
     { path: 'about', loadComponent: () => import('./components/about/about.component').then(c => c.AboutComponent) },
-    { path: 'settings', loadComponent: () => import('./components/about/about.component').then(c => c.AboutComponent) },
+
+    { path: '**', component: NotFound404Component }
 ];
 
 

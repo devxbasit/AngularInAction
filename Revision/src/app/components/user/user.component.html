@@ -1,0 +1,14 @@
+<div *ngFor="let user of users$ | async">
+    <p>{{user.name}} - {{user.email}} - <button (click)="getSelectedUser(user.id)">click to select user</button></p>
+</div>
+
+
+
+
+<p>Selected User Details below</p>
+<div *ngIf="user$ | async as user">
+
+    <p>{{user.name}}</p>
+    <p>{{user.email}}</p>
+
+</div>

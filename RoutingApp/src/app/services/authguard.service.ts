@@ -4,9 +4,12 @@ import {
   CanActivate,
   CanActivateChild,
   CanDeactivate,
+  CanLoad,
   Resolve,
+  Route,
   Router,
   RouterStateSnapshot,
+  UrlSegment,
   UrlTree,
 } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -20,14 +23,18 @@ import { CourseService } from './course.service';
 })
 export class AuthguardService
   implements
-    CanActivate,
-    CanActivateChild,
-    CanDeactivate<IDeactivateComponent>,
-    Resolve<string>
-{
+  CanActivate,
+  CanActivateChild,
+  CanDeactivate<IDeactivateComponent>,
+  Resolve<string>,
+  CanLoad {
   private _authService: AuthService = inject(AuthService);
   private _router: Router = inject(Router);
   private _courseService: CourseService = inject(CourseService);
+
+  canLoad(route: Route, segments: UrlSegment[]): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
+    return true;
+  }
 
   canActivate(
     route: ActivatedRouteSnapshot,
