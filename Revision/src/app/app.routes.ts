@@ -7,13 +7,20 @@ import { AccountSettingsComponent } from './components/account-settings/account-
 import { AuthGuardService } from './services/authguard.service.ts';
 import { UserComponent } from './components/user/user.component';
 import { NotFound404Component } from './components/not-found-404/not-found-404.component';
+import { RegistrationUserComponent } from './components/registration-user/registration-user.component';
+import { RegistrationAdminComponent } from './components/registration-admin/registration-admin.component';
 
 export const routes: Routes = [
 
     { path: '', component: HomeComponent, pathMatch: 'full' },
     { path: 'home', redirectTo: '' },
     { path: 'contact', component: ContactComponent },
+
+
     { path: 'user', component: UserComponent },
+    { path: 'user-registration', component: RegistrationUserComponent },
+    { path: 'admin-registration', component: RegistrationAdminComponent },
+
 
     {
         path: 'products',
