@@ -1,1 +1,51 @@
-<p>registration-admin works!</p>
+<form [formGroup]="adminRegistrationForm" (ngSubmit)="registerAdmin()">
+    <div>
+        <label for="">username</label>
+        <input type="text" formControlName="username" />
+    </div>
+
+    <div>
+        <label for="">dob</label>
+        <input type="date" formControlName="dob" />
+    </div>
+
+    <hr />
+
+    <div formGroupName="address">
+
+        <div>
+            <label for="">city</label>
+            <input type="text" formControlName="city" />
+        </div>
+
+        <div>
+            <label for="">street</label>
+            <input type="text" formControlName="street" />
+        </div>
+    </div>
+
+
+    <hr />
+    <div formArrayName="skills">
+
+        <button (click)="addNewSkill()">Add new skill</button>
+
+        <ng-container *ngFor="let control of adminRegistrationForm.get('skills')['controls'] let i = index">
+            <div>
+                <input type="text" placeholder="Add New Skills Here" formControlName="{{i}}">
+                <button (click)="deleteSkill(i)">delete skill</button>
+            </div>
+        </ng-container>
+
+    </div>
+    <hr />
+
+
+    <button [disabled]=" !adminRegistrationForm.valid" type="submit">submit</button>
+</form>
+
+
+
+<button (click)="patch()">patch</button>
+<button (click)="reset()">reset</button>
+<button (click)="generateUsername()">generate username</button>

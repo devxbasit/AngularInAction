@@ -16,9 +16,9 @@ export class RegistrationUserComponent {
 
   registerUser() {
 
+    console.clear();
+    console.log(this.userRegistrationForm);
     console.log(this.userRegistrationForm.value);
-
-    console.log(this.userRegistrationForm)
 
   }
 
@@ -33,8 +33,7 @@ export class RegistrationUserComponent {
 
     this.userRegistrationForm.form.patchValue(
       {
-        firstName: "patch first name",
-        gender: 'male',
+        username: "patch username",
         address: {
           city: "srinagar",
           street: "street"

@@ -1,10 +1,22 @@
 <p>Template Driven Form</p>
 
 
-<form #userRegistrationForm="ngForm" (ngSubmit)="registerUser()">
+<form #userRegistrationForm="ngForm" (ngSubmit)="registerUser()" novalidate>
 
-    <div><label required for="">name : <input type="text" name="firstName" ngModel></label></div>
-    <div><label required for="">dob : <input type="date" name="dob" ngModel></label></div>
+    <div>
+        <label for="">username : <input required type="text" name="username" ngModel #username="ngModel"></label>
+        <div *ngIf="!username.valid && (username.dirty || username.touched)"> username is required</div>
+    </div>
+
+    <div>
+        <label for="">email : <input type="email" name="email" ngModel></label>
+        <div></div>
+
+
+    </div>
+
+
+    <div><label for="">dob : <input type="date" name="dob" ngModel></label></div>
 
     <div>
         <label for="">Gender</label>
@@ -33,12 +45,12 @@
 
 
     <div ngModelGroup="address">
-        <div><label required for="">city : <input type="text" name="city" ngModel></label></div>
-        <div><label required for="">street : <input type="text" name="street" ngModel></label></div>
+        <div><label for="">city : <input type="text" name="city" ngModel></label></div>
+        <div><label for="">street : <input type="text" name="street" ngModel></label></div>
     </div>
 
 
-    <button type="submit" [disabled]="userRegistrationForm.invalid">submit</button>
+    <button type="submit" [disabled]="!userRegistrationForm.valid">submit</button>
 
 </form>
 
