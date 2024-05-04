@@ -1,5 +1,5 @@
 <!-- 
-$event.target.value raises the error Property ‘value’ does not exist on type ‘EventTarget’ if fullTemplateTypeCheck is set to true under angularCompilerOptions in the tsconfig.json.
+$event.target.value raidses the error Property ‘value’ oes not exist on type ‘EventTarget’ if fullTemplateTypeCheck is set to true under angularCompilerOptions in the tsconfig.json.
 The error is due to the fact that the value property is not guaranteed to exist in the $event.target.
 To solve this problem either you can use the $any typecast function ($any($event.target).value) to stop the type checking in the template or set fullTemplateTypeCheck to false in tsconfig.json. 
 -->
