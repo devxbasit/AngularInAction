@@ -8,17 +8,17 @@
         "Angular": [
             [
                 {
-                    "name": "Angular:T1",
+                    "name": "Angular:ng g components/",
+                    "commands": [
+                        "ng g c components/"
+                    ]
+                },
+                {
+                    "name": "Angular:ng serve",
                     "commands": [
                         "ng serve"
                     ],
                     "autoExecuteCommands": true
-                },
-                {
-                    "name": "Angular:T2",
-                    "commands": [
-                        "ng g c component/"
-                    ]
                 }
             ]
         ],
