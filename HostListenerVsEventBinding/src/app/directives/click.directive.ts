@@ -5,7 +5,8 @@ import { Directive, HostListener } from '@angular/core';
   standalone: true,
 })
 export class ClickDirective {
-  @HostListener('click') onButtonClick() {
+  @HostListener('click') 
+  onButtonClick() {
     alert('Hello from directive');
   }
 }

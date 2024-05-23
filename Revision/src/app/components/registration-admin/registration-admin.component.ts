@@ -30,13 +30,8 @@ export class RegistrationAdminComponent implements OnInit {
           [
             this.formBuilder.control("Java")
           ])
-
-
       });
-
-
   }
-
 
   registerAdmin() {
 
@@ -45,7 +40,6 @@ export class RegistrationAdminComponent implements OnInit {
     console.log(this.adminRegistrationForm);
 
   }
-
 
   patch() {
 
@@ -56,7 +50,6 @@ export class RegistrationAdminComponent implements OnInit {
           city: "srinagar"
         }
       });
-
   }
 
   generateUsername() {
@@ -68,7 +61,6 @@ export class RegistrationAdminComponent implements OnInit {
   reset() {
     this.adminRegistrationForm.reset();
   }
-
 
 
   addNewSkill() {

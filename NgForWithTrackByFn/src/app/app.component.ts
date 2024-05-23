@@ -33,6 +33,12 @@ export class AppComponent {
     this.nextId = 4;
   }
 
+
+  trackUsers(index: number, item: any) {
+    return item.id;
+  }
+
+
   removeUser(index: number) {
 
     this.users.splice(index, 1);
@@ -42,9 +48,6 @@ export class AppComponent {
 
   }
 
-  trackUsers(index: number, item: any) {
-    return item.id;
-  }
 
   addUser() {
     this.users.push({ id: this.nextId++, name: this.name });
