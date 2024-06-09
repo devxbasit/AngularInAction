@@ -16,24 +16,6 @@
         {
           "name": "Angular",
           "commands": [
-            "ng g s services/"
-          ]
-        },
-        {
-          "name": "Angular",
-          "commands": [
-            "ng g c components/"
-          ]
-        },
-        {
-          "name": "Angular",
-          "commands": [
-            "ng g c components/"
-          ]
-        },
-        {
-          "name": "Angular",
-          "commands": [
             "ng serve"
           ],
           "autoExecuteCommands": true

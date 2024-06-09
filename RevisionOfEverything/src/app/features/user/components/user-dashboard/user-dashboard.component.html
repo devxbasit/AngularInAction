@@ -1,0 +1,4 @@
+<app-user-list (deleteUserEvent)="onDeleteUser($event)"></app-user-list>
+
+<app-delete-user *ngIf="showDeleteUser" [User]=""> </app-delete-user>
+<hr />

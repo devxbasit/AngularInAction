@@ -1,0 +1,12 @@
+<div class="container">
+  <button (click)="refreshGrid()">Refresh Grid</button>
+  <hr />
+  <div *ngFor="let user of usersList | async">
+    <p>
+      Id : {{ user.id }}, Name : {{ user.name }}, Email: {{ user.email }}
+      <button routerLink="/user/{{ user.id }}">View details</button>
+      <button (click)="editUser(user.id)">edit</button>
+      <button (click)="deleteUser(user?.id)">delete</button>
+    </p>
+  </div>
+</div>
