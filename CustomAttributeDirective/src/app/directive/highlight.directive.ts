@@ -5,7 +5,7 @@ import { Directive, ElementRef, OnInit } from '@angular/core';
   standalone: true,
 })
 export class HighlightDirective implements OnInit {
-  constructor(private element: ElementRef) { }
+  constructor(private element: ElementRef) {}
 
   ngOnInit(): void {
     // not safe to use nativeElement - see Renderer2

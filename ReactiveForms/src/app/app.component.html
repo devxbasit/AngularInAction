@@ -1,130 +1,245 @@
-<section class=" mx-auto w-100  border border-primary p-5">
+<section class="mx-auto w-100 border border-primary p-5">
+  <p>
+    Registration Form
+    <span
+      ><a
+        type="button"
+        class="link-primary link-underline-primary"
+        (click)="generateUserName()"
+        >generate a username</a
+      ></span
+    >
+  </p>
 
+  <form [formGroup]="addUserReactiveForm" (ngSubmit)="submitUser()">
+    <div class="row mb-3">
+      <div class="col">
+        <input
+          formControlName="firstName"
+          class="form-control"
+          type="text"
+          placeholder="Enter First Name..."
+        />
+      </div>
+      <div class="col">
+        <input
+          formControlName="lastName"
+          class="form-control"
+          type="text"
+          placeholder="Enter Last Name..."
+        />
+      </div>
+      <div class="col">
+        <input
+          formControlName="email"
+          class="form-control"
+          type="text"
+          placeholder="Enter Email..."
+        />
+      </div>
+      <div class="col">
+        <input
+          formControlName="username"
+          class="form-control"
+          type="text"
+          placeholder="Enter Username..."
+        />
+      </div>
+      <div class="col">
+        <input
+          formControlName="dob"
+          class="form-control"
+          type="date"
+          placeholder="Select DOB..."
+        />
+      </div>
+    </div>
 
-    <p>Registration Form
-        <span><a type="button" class="link-primary link-underline-primary" (click)="generateUserName()">generate a
-                username</a></span>
-    </p>
+    <div class="mb-3">
+      <div class="form-check form-check-inline form-check-info">
+        <input
+          formControlName="gender"
+          class="form-check-input"
+          type="radio"
+          value="male"
+          name="gender"
+        />
+        <label class="form-check-label">Male</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input
+          formControlName="gender"
+          class="form-check-input"
+          type="radio"
+          value="female"
+          name="gender"
+        />
+        <label class="form-check-label">Female</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input
+          formControlName="gender"
+          class="form-check-input"
+          type="radio"
+          value="other"
+          name="gender"
+        />
+        <label class="form-check-label">Prefer not to say</label>
+      </div>
+    </div>
 
-    <form [formGroup]="addUserReactiveForm" (ngSubmit)=" submitUser()">
-
-        <div class="row mb-3">
-            <div class="col">
-                <input formControlName="firstName" class="form-control" type="text" placeholder="Enter First Name...">
-            </div>
-            <div class="col">
-                <input formControlName="lastName" class="form-control" type="text" placeholder="Enter Last Name...">
-            </div>
-            <div class="col">
-                <input formControlName="email" class="form-control" type="text" placeholder="Enter Email...">
-            </div>
-            <div class="col">
-                <input formControlName="username" class="form-control" type="text" placeholder="Enter Username...">
-            </div>
-            <div class="col">
-                <input formControlName="dob" class="form-control" type="date" placeholder="Select DOB...">
-            </div>
+    <div class="mb-3" formGroupName="address">
+      <div class="row">
+        <div class="col">
+          <input
+            formControlName="street"
+            class="form-control"
+            type="text"
+            placeholder="Enter Street Address..."
+          />
         </div>
-
-        <div class="mb-3">
-            <div class="form-check form-check-inline form-check-info">
-                <input formControlName="gender" class="form-check-input" type="radio" value="male" name="gender">
-                <label class="form-check-label">Male</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input formControlName="gender" class="form-check-input" type="radio" value="female" name="gender">
-                <label class="form-check-label">Female</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input formControlName="gender" class="form-check-input" type="radio" value="other" name="gender">
-                <label class="form-check-label">Prefer not to say</label>
-            </div>
+        <div class="col">
+          <select formControlName="country" class="form-select">
+            <option selected="selected" value="">Select Country</option>
+            <ng-container *ngFor="let country of countries; let i = index">
+              <option value="{{ country.name }}">{{ country.name }}</option>
+            </ng-container>
+          </select>
         </div>
-
-        <div class="mb-3" formGroupName="address">
-            <div class="row">
-                <div class="col">
-                    <input formControlName="street" class="form-control" type="text"
-                        placeholder="Enter Street Address...">
-                </div>
-                <div class="col">
-                    <select formControlName="country" class="form-select">
-                        <option selected="selected" value=''>Select Country</option>
-                        <ng-container *ngFor="let country of countries; let i = index">
-                            <option value="{{country.name}}">{{country.name}}</option>
-                        </ng-container>
-                    </select>
-                </div>
-                <div class="col">
-                    <input formControlName="city" class="form-control" type="text" placeholder="Enter City...">
-                </div>
-                <div class="col">
-                    <input formControlName="region" class="form-control" type="text" placeholder="Enter Region...">
-                </div>
-                <div class="col">
-                    <input formControlName="postalCode" class="form-control" type="text"
-                        placeholder="Enter Postal Code...">
-                </div>
-            </div>
+        <div class="col">
+          <input
+            formControlName="city"
+            class="form-control"
+            type="text"
+            placeholder="Enter City..."
+          />
         </div>
-
-        <div class="mb-3 border border-black" formArrayName="skills">
-
-            <button type="button" class="btn btn-success" (click)="addNewSkill()"> Add new skill</button>
-
-            <div *ngFor="let control of addUserReactiveForm.get('skills')['controls']; let i = index;">
-                <div class=" mb-3 row">
-                    <div class="col-11">
-                        <input formControlName="{{i}}" class="form-control" type="text"
-                            placeholder="Enter Skill Here...">
-                    </div>
-                    <div class="col-1">
-                        <button (click)="deleteSkill(i)" type="button" class="btn btn-danger">Delete</button>
-                    </div>
-                </div>
-            </div>
+        <div class="col">
+          <input
+            formControlName="region"
+            class="form-control"
+            type="text"
+            placeholder="Enter Region..."
+          />
         </div>
-
-        <div class=" mb-3 border border-black" formArrayName="experience">
-
-            <button class="btn btn-success" type="button" (click)="addExperience()">Add Experience</button>
-
-            <div ngClass="mb-3"
-                *ngFor="let experience of addUserReactiveForm.get('experience')['controls']; let i = index"
-                formGroupName="{{i}}">
-
-                <span><a class="link-danger link-underline-danger" (click)="deleteExperience(i)">Delete
-                        Experience</a></span>
-
-                <div class="row">
-                    <div class="col">
-                        <input formControlName="companyName" class="form-control" type="text"
-                            placeholder="Enter Company Name">
-                    </div>
-                    <div class="col">
-                        <select formControlName="position" class="form-select">
-                            <option selected value="">Select Position</option>
-                            <option value="jd">Junior Developer</option>
-                            <option value="sd">Senior Developer</option>
-                            <option value="tl">Tech Lead</option>
-                        </select>
-                    </div>
-                    <div class="col">
-                        <input formControlName="yoe" class="form-control" type="text" placeholder="Enter YOE">
-                    </div>
-                    <div class="col">
-                        <input formControlName="startDate" class="form-control" type="date" placeholder="Start Date">
-                    </div>
-                    <div class="col">
-                        <input formControlName="endDate" class="form-control" type="date" placeholder="End Date">
-                    </div>
-                </div>
-            </div>
-
+        <div class="col">
+          <input
+            formControlName="postalCode"
+            class="form-control"
+            type="text"
+            placeholder="Enter Postal Code..."
+          />
         </div>
+      </div>
+    </div>
 
-        <button class="btn btn-primary" type="submit">Submit</button>
-        <button [disabled]="!addUserReactiveForm.valid" class="btn btn-primary" type="submit">Submit</button>
-        <button type="button" (click)="resetUserForm()">Reset Form</button>
-    </form>
+    <div class="mb-3 border border-black" formArrayName="skills">
+      <button type="button" class="btn btn-success" (click)="addNewSkill()">
+        Add new skill
+      </button>
+
+      <div
+        *ngFor="
+          let control of addUserReactiveForm.get('skills')['controls'];
+          let i = index
+        "
+      >
+        <div class="mb-3 row">
+          <div class="col-11">
+            <input
+              formControlName="{{ i }}"
+              class="form-control"
+              type="text"
+              placeholder="Enter Skill Here..."
+            />
+          </div>
+          <div class="col-1">
+            <button
+              (click)="deleteSkill(i)"
+              type="button"
+              class="btn btn-danger"
+            >
+              Delete
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-3 border border-black" formArrayName="experience">
+      <button class="btn btn-success" type="button" (click)="addExperience()">
+        Add Experience
+      </button>
+
+      <div
+        ngClass="mb-3"
+        *ngFor="
+          let experience of addUserReactiveForm.get('experience')['controls'];
+          let i = index
+        "
+        formGroupName="{{ i }}"
+      >
+        <span
+          ><a
+            class="link-danger link-underline-danger"
+            (click)="deleteExperience(i)"
+            >Delete Experience</a
+          ></span
+        >
+
+        <div class="row">
+          <div class="col">
+            <input
+              formControlName="companyName"
+              class="form-control"
+              type="text"
+              placeholder="Enter Company Name"
+            />
+          </div>
+          <div class="col">
+            <select formControlName="position" class="form-select">
+              <option selected value="">Select Position</option>
+              <option value="jd">Junior Developer</option>
+              <option value="sd">Senior Developer</option>
+              <option value="tl">Tech Lead</option>
+            </select>
+          </div>
+          <div class="col">
+            <input
+              formControlName="yoe"
+              class="form-control"
+              type="text"
+              placeholder="Enter YOE"
+            />
+          </div>
+          <div class="col">
+            <input
+              formControlName="startDate"
+              class="form-control"
+              type="date"
+              placeholder="Start Date"
+            />
+          </div>
+          <div class="col">
+            <input
+              formControlName="endDate"
+              class="form-control"
+              type="date"
+              placeholder="End Date"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn btn-primary" type="submit">Submit</button>
+    <button
+      [disabled]="!addUserReactiveForm.valid"
+      class="btn btn-primary"
+      type="submit"
+    >
+      Submit
+    </button>
+    <button type="button" (click)="resetUserForm()">Reset Form</button>
+  </form>
 </section>
