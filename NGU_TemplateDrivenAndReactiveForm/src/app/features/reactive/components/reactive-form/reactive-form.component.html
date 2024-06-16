@@ -1,1 +1,10 @@
-<p>reactive-form works!</p>
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <input type="text" formControlName="name" placeholder="Enter Name..." />
+  <input type="text" formControlName="email" placeholder="Enter Email..." />
+
+  <button (click)="onFullUpdate()" type="button">Full Update</button>
+  <button (click)="onPartialUpdate()" type="button">Partial Update</button>
+  <button (click)="onReset()" type="button">Reset</button>
+
+  <button type="submit">Submit</button>
+</form>
