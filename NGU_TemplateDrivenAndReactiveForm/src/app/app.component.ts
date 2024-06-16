@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'NGU_RouterCompleteGuide';
+  title = 'NGU_TemplateDrivenAndReactiveForm';
 }

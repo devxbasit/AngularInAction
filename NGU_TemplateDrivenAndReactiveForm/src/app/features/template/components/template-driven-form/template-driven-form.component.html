@@ -1,0 +1,56 @@
+<p [style.color]="'red'">
+  Two-way binding form, with live changes - [(ngModel)]="user.name"
+</p>
+<p>from will trigger change event on every key press on input</p>
+<form #userForm1="ngForm" (ngSubmit)="addUserTwoWayBinding()">
+  <input
+    type="text"
+    [(ngModel)]="userModel1.name"
+    required
+    name="name"
+    placeholder="name"
+  />
+  <button type="button" (click)="viewModelDataTwoWayBinding()">
+    View Model State
+  </button>
+  <button type="submit">Submit</button>
+</form>
+
+<hr />
+<hr />
+
+<p [style.color]="'red'">
+  One-way binding form, with no live changes - [ngModel]="user.name"
+</p>
+<p>
+  no model will not update at all, not even on submit, but all the initial
+  values will be set
+</p>
+<p>we now have to pass the form data or form itself from submit function</p>
+<p>Nothing will happen automatically</p>
+<form #userForm2="ngForm" (ngSubmit)="addUserOneWayBinding(userForm2)">
+  <input
+    type="text"
+    [ngModel]="userModel2.name"
+    required
+    name="name"
+    placeholder="name"
+  />
+  <button type="button" (click)="viewModelDataOneWayBinding()">
+    View Model State
+  </button>
+  <button type="submit">Submit</button>
+</form>
+
+<hr />
+<hr />
+
+<p [style.color]="'red'">
+  No binding at all, no model, no initial binding, only form validation -
+  ngModel
+</p>
+
+<form #userForm3="ngForm" (ngSubmit)="addUserNoBinding(userForm3)">
+  <input type="text" ngModel required name="name" placeholder="name" />
+  <button type="submit">Submit</button>
+</form>
