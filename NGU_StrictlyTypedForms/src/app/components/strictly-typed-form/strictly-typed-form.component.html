@@ -1,0 +1,22 @@
+<h1>Strictly Typed Form in Action</h1>
+<p>reset the form, and hit Submit</p>
+
+<br />
+
+<form [formGroup]="userForm" (ngSubmit)="onUserFormSubmit()">
+  <input type="text" formControlName="name" placeholder="Enter Name" />
+  <input type="text" formControlName="email" placeholder="Enter Email" />
+
+  <button type="submit">Submit</button>
+  <button type="button" (click)="onUserFormReset()">Reset</button>
+</form>
+
+<hr />
+<hr />
+
+<form [formGroup]="adminForm" (ngSubmit)="onAdminFormSubmit()">
+  <input type="text" formControlName="name" placeholder="Enter Name" />
+  <input type="text" formControlName="email" placeholder="Enter Email" />
+  <button type="submit">Submit</button>
+  <button type="button" (click)="onAdminormReset()">Reset</button>
+</form>
