@@ -1,0 +1,7 @@
+<h4>Cats Dashboard - Cats List</h4>
+
+<ng-container *ngFor="let cat of cats">
+  <a [routerLink]="cat.id">
+    <img [src]="cat.url" width="50px" />
+  </a>
+</ng-container>

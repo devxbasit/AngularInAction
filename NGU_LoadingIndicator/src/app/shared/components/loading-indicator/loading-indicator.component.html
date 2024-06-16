@@ -1,0 +1,9 @@
+<ng-container *ngIf="customLoadingIndicator; else matSpinnerTemplate">
+  <div *ngIf="loading$ | async">
+    <ng-container *ngTemplateOutlet="customLoadingIndicator"></ng-container>
+  </div>
+</ng-container>
+
+<ng-template #matSpinnerTemplate>
+  <mat-spinner *ngIf="loading$ | async"></mat-spinner>
+</ng-template>

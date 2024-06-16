@@ -1,0 +1,24 @@
+<div>
+  <a routerLink="/">Home</a>
+  --
+  <a routerLink="/cats">Cats </a>
+</div>
+<hr />
+<br />
+
+<router-outlet></router-outlet>
+
+<app-loading-indicator> </app-loading-indicator>
+<app-loading-indicator>
+  <ng-template #loading>
+    <div class="custom-spinner">
+      <img width="100" src="/assets/img/spinner.gif" alt="" />
+    </div>
+  </ng-template>
+</app-loading-indicator>
+
+<!-- Remove interceptor from CoreModule Provider's Array and manually listen to router events -->
+<!-- <app-loading-indicator [detectRouteTransition]="true"> </app-loading-indicator> -->
+
+<hr />
+<h1>Footer</h1>
