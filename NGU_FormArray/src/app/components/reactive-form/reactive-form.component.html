@@ -1,0 +1,59 @@
+<form [formGroup]="studentForm" (ngSubmit)="onStudentFormSubmit()">
+  <input type="text" formControlName="name" placeholder="Enter Name" />
+  <br />
+  <button type="button" (click)="onAddSubject()">Add New Skill</button>
+  <ng-container
+    formArrayName="subject"
+    *ngFor="let control of studentForm.controls.subject.controls; let i = index"
+  >
+    <p>
+      <input type="text" [formControlName]="i" placeholder="Enter Subject" />
+      <button type="button" (click)="onDeleteSubject(i)">Delete</button>
+    </p>
+  </ng-container>
+
+  <button type="submit">Submit</button>
+  <button type="button" (click)="onStudentFormReset()">Reset</button>
+</form>
+
+<hr />
+<br />
+<br />
+<br />
+<br />
+
+<form [formGroup]="teacherForm" (ngSubmit)="onTeacherFormSubmit()">
+  <input type="text" formControlName="name" placeholder="Enter Name" />
+  <br />
+  <button type="button" (click)="onAddAddress()">Add New Address</button>
+
+  <div formArrayName="address">
+    <ng-container
+      *ngFor="
+        let addressForm of teacherForm.controls.address.controls;
+        let i = index
+      "
+    >
+      <div [formGroup]="addressForm" [style.border]="'1px solid red'">
+        <input
+          type="text"
+          formControlName="street"
+          placeholder="Enter Street"
+        />
+        <input
+          type="text"
+          formControlName="postalCode"
+          placeholder="Enter postal Code"
+        />
+        <input type="text" formControlName="state" placeholder="Enter State" />
+        <input type="radio" formControlName="isHomeAddress" value="true" />
+        <input type="radio" formControlName="isHomeAddress" value="false" />
+        <button type="button" (click)="onDeleteAddress(i)">Delete</button>
+      </div>
+    </ng-container>
+  </div>
+
+  <button type="submit">Submit</button>
+  <button type="button" (click)="onTeacherFormReset()">Reset</button>
+
+</form>
