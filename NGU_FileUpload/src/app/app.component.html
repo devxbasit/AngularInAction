@@ -1,0 +1,12 @@
+<form [formGroup]="studentForm" (ngSubmit)="onStudentFormSubmit()">
+  <input type="text" formControlName="name" placeholder="Enter Name" />
+  <input type="text" formControlName="age" placeholder="Enter Age" />
+  <input
+    (change)="onStudentFormFileChange($event)"
+    type="file"
+    formControlName="image"
+  />
+
+  <button type="submit">Submit</button>
+  <button type="button" (click)="onStudentFormReset()">Reset</button>
+</form>
