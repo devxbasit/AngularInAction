@@ -1,0 +1,20 @@
+<p [ngStyle]="{ 'choose-quantity-component-disabled': isDisabled }">
+  Select Quantity
+  <button
+    type="button"
+    [ngStyle]="{ 'choose-quantity-component-disabled': isDisabled }"
+    [disabled]="isDisabled"
+    (click)="onQuantityIncrease()"
+  >
+    +
+  </button>
+  {{ quantity }}
+  <button
+    type="button"
+    [ngStyle]="{ 'choose-quantity-component-disabled': isDisabled }"
+    [disabled]="isDisabled"
+    (click)="onQuantityDecrease()"
+  >
+    -
+  </button>
+</p>

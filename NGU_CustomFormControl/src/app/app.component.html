@@ -1,0 +1,23 @@
+<form [formGroup]="productForm" (ngSubmit)="onProductFormSubmit()">
+  <input
+    type="text"
+    formArrayName="productName"
+    placeholder="Enter Product Name"
+  />
+
+  <app-choose-quantity
+    [disabled]="isCustomControlDisabled"
+    [incrementBy]="1"
+    formControlName="quantity"
+  ></app-choose-quantity>
+
+  <button type="submit">Submit</button>
+  <button type="button" (click)="onFormReset()">Reset</button>
+  <button type="button" (click)="onFormPatch()">Patch</button>
+  <button
+    type="button"
+    (click)="isCustomControlDisabled = !isCustomControlDisabled"
+  >
+    enable/disable custom control
+  </button>
+</form>
