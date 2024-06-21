@@ -1,0 +1,13 @@
+identifier: lbx4o5dd74jes8qb
+appPort: 1864
+staticPort: 1668
+reloadPort: 2667
+hostName: localhost
+projectName: PersonalBlogWithScully
+homeFolder: >-
+  /home/basit/Documents/devxbasit@GitHub/Angular/AngularInAction/AngularProjectsBuildModernWebAppsInAngular16/PersonalBlogWithScully
+distFolder: dist/personal-blog-with-scully
+outDir: >-
+  /home/basit/Documents/devxbasit@GitHub/Angular/AngularInAction/AngularProjectsBuildModernWebAppsInAngular16/PersonalBlogWithScully/dist/static
+handle404: ''
+allowErrorCollect: true
