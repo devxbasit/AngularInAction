@@ -1,4 +1,4 @@
-import { Component, DoCheck, Inject, OnInit, inject } from '@angular/core'
+import { Component, DestroyRef, DoCheck, Inject, OnInit, inject } from '@angular/core'
 import {
   FormControl,
   FormsModule,
@@ -12,6 +12,8 @@ import { MatIconModule } from '@angular/material/icon'
 import { MatInputModule } from '@angular/material/input'
 import { WeatherService } from '../weather/weather.service'
 import { debounceTime, filter, tap } from 'rxjs'
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
+import { PostalCodeService } from '../postal-code/postal-code.service'
 
 @Component({
   selector: 'app-city-search',
@@ -23,6 +25,8 @@ import { debounceTime, filter, tap } from 'rxjs'
 export class CitySearchComponent implements OnInit {
   search: FormControl<string>
   weatherService = inject(WeatherService)
+  postalCodeService = inject(PostalCodeService)
+  destroyRef = inject(DestroyRef)
 
   constructor() {
     this.search = new FormControl<string>('', {
@@ -32,18 +36,35 @@ export class CitySearchComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // declarative + imperative approach
+    // this.search.valueChanges
+    //   .pipe(
+    //     takeUntilDestroyed(this.destroyRef),
+    //     filter(() => this.search.valid),
+    //     debounceTime(1000)
+    //   )
+    //   .subscribe((searchValue: string) => {
+    //     const [city, country] = searchValue.split(',').map((s) => s.trim())
+    //     //https://stackoverflow.com/questions/61480993/when-should-i-use-nullish-coalescing-vs-logical-or
+    //     this.weatherService.updateCurrentWeather(city, country ?? undefined)
+    //   })
+
+    // declarative approach with empty .subscribe()
     this.search.valueChanges
       .pipe(
+        takeUntilDestroyed(this.destroyRef),
+        filter(() => this.search.valid),
         debounceTime(1000),
-        filter(() => this.search.valid)
+        tap((searchValue: string) => this.doSearch(searchValue))
       )
-      .subscribe((value: string) => {
-        console.log(value)
-        const [city, country] = value.split(',').map((s) => s.trim())
+      .subscribe()
+  }
 
-        //https://stackoverflow.com/questions/61480993/when-should-i-use-nullish-coalescing-vs-logical-or
-        this.weatherService.updateCurrentWeather(city, country ?? undefined)
-      })
+  private doSearch(searchValue: string) {
+    const [city, country] = searchValue.split(',').map((s) => s.trim())
+
+    //https://stackoverflow.com/questions/61480993/when-should-i-use-nullish-coalescing-vs-logical-or
+    this.weatherService.updateCurrentWeather(city, country ?? undefined)
   }
 
   getErrorMessages(): string {

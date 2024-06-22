@@ -1,7 +1,8 @@
 import { CommonModule, DatePipe, DecimalPipe } from '@angular/common'
-import { Component, OnInit, inject } from '@angular/core'
+import { Component, DestroyRef, OnInit, inject } from '@angular/core'
 import { ICurrentWeather } from '../interfaces'
 import { WeatherService } from '../weather/weather.service'
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 
 @Component({
   selector: 'app-current-weather',
@@ -11,12 +12,14 @@ import { WeatherService } from '../weather/weather.service'
   styleUrl: './current-weather.component.scss',
 })
 export class CurrentWeatherComponent implements OnInit {
-  current: ICurrentWeather = {} as ICurrentWeather
+  destroyRef = inject(DestroyRef)
   weatherService = inject(WeatherService)
+  current: ICurrentWeather = {} as ICurrentWeather
   current$ = this.weatherService.currentWeather$
 
   ngOnInit(): void {
-    this.current$.subscribe({
+    this.current$.pipe(takeUntilDestroyed(this.destroyRef))
+    .subscribe({
       next: (weather) => {
         this.current = weather
       },
