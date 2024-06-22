@@ -1,0 +1,14 @@
+<form>
+  <mat-form-field appearance="outline">
+    <mat-label>City Name or Postal Code</mat-label>
+    <mat-icon matPrefix>search</mat-icon>
+    <input matInput aria-label="City or Zip" [formControl]="search" />
+    <mat-hint>Specify country code like 'Paris, US'</mat-hint>
+
+    @if (search.invalid) {
+    <mat-error> {{ getErrorMessages() }}</mat-error>
+    }
+  </mat-form-field>
+
+  <button type="submit">Search</button>
+</form>

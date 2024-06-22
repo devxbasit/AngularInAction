@@ -1,21 +1,16 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
-
-import { PostalCodeService } from './services/postal-code.service';
-import { takeUntil } from 'rxjs';
-import { CitySearchComponent } from './components/city-search/city-search.component';
+import { CitySearchComponent } from './city-search/city-search.component';
+import { FlexModule } from '@ngbracket/ngx-layout';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, CitySearchComponent],
+  imports: [CommonModule, RouterOutlet, CitySearchComponent, FlexModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
 })
 export class AppComponent {
   title = 'local-weather-app';
-
-
 }
