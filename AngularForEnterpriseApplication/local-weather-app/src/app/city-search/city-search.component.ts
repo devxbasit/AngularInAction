@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, inject } from '@angular/core'
+import { Component, DoCheck, Inject, OnInit, inject } from '@angular/core'
 import {
   FormControl,
   FormsModule,
@@ -11,7 +11,7 @@ import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatIconModule } from '@angular/material/icon'
 import { MatInputModule } from '@angular/material/input'
 import { WeatherService } from '../weather/weather.service'
-import { debounceTime } from 'rxjs'
+import { debounceTime, filter, tap } from 'rxjs'
 
 @Component({
   selector: 'app-city-search',
@@ -26,23 +26,24 @@ export class CitySearchComponent implements OnInit {
 
   constructor() {
     this.search = new FormControl<string>('', {
-      updateOn: 'submit',
       nonNullable: true,
       validators: [Validators.minLength(3)],
     })
   }
 
   ngOnInit(): void {
-    this.search.valueChanges.pipe(debounceTime(1000)).subscribe((searchValue: string) => {
-      const userInput = searchValue.split(',').map((s) => s.trim())
-      this.weatherService
-        .getCurrentWeather(userInput[0], userInput.length > 1 ? userInput[1] : undefined)
-        .subscribe((data) => {
-          if (this.search.valid) {
-            console.log(data)
-          }
-        })
-    })
+    this.search.valueChanges
+      .pipe(
+        debounceTime(1000),
+        filter(() => this.search.valid)
+      )
+      .subscribe((value: string) => {
+        console.log(value)
+        const [city, country] = value.split(',').map((s) => s.trim())
+
+        //https://stackoverflow.com/questions/61480993/when-should-i-use-nullish-coalescing-vs-logical-or
+        this.weatherService.updateCurrentWeather(city, country ?? undefined)
+      })
   }
 
   getErrorMessages(): string {
