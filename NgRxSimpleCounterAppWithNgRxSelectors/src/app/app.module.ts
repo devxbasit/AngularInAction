@@ -1,4 +1,5 @@
-import { NgModule } from '@angular/core';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './components/counter/dashboard/dashboard.component';
@@ -21,6 +22,7 @@ import { ChannelNameComponent } from './components/counter/channel-name/channel-
     BrowserModule,
     FormsModule,
     StoreModule.forRoot({ counter: counterReducer }),
+    StoreDevtoolsModule.instrument({ logOnly: !isDevMode() }),
   ],
   providers: [],
   bootstrap: [AppComponent],
