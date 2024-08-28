@@ -10,10 +10,13 @@ import {
 } from '@angular/forms';
 import { postSelector } from '../../store/post.selector';
 import { addPostAction, updatePostAction } from '../../store/post.actions';
+import { first } from 'rxjs';
+import { IPost } from 'src/app/core/interfaces/core.interface.ts';
 
 interface IPostForm {
-  postId: FormControl<number>;
+  postId: FormControl<string>;
   title: FormControl<string>;
+  description: FormControl<string>;
 }
 
 @Component({
@@ -33,8 +36,11 @@ export class PostUpsertComponent implements OnInit {
 
   constructor() {
     this.postForm = this.fb.group({
-      postId: this.fb.nonNullable.control<number>(0, [Validators.required]),
+      postId: this.fb.nonNullable.control<string>('', [Validators.required]),
       title: this.fb.nonNullable.control<string>('', [Validators.required]),
+      description: this.fb.nonNullable.control<string>('', [
+        Validators.required,
+      ]),
     });
   }
 
@@ -45,17 +51,19 @@ export class PostUpsertComponent implements OnInit {
 
       if (postId) {
         this.isEditMode = true;
-        this.store.select(postSelector(Number(postId))).subscribe((post) => {
-          if (post) {
-            this.postForm.patchValue({
-              postId: post.postId,
-              title: post.title,
-            });
-          }
-        });
+        this.store
+          .select(postSelector(postId))
+          .pipe(first())
+          .subscribe((post) => {
+            if (post) {
+              this.postForm.controls.postId.reset();
+              this.postForm.patchValue(post);
+            }
+          });
       } else {
         this.isEditMode = false;
         this.postForm.reset();
+        this.postForm.controls.postId.setValue('-1');
       }
     });
   }
@@ -70,7 +78,10 @@ export class PostUpsertComponent implements OnInit {
         })
       );
     } else {
-      this.store.dispatch(addPostAction({ post: this.postForm.getRawValue() }));
+      const post: IPost = this.postForm.getRawValue();
+      delete post['postId'];
+
+      this.store.dispatch(addPostAction({ post }));
     }
   }
 }

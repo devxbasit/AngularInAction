@@ -12,7 +12,10 @@ const _postReducer = createReducer(
   on(addPostAction, (state, action) => {
     console.log('Add post reducer in action');
 
-    const newPost: IPost = { ...action.post, postId: new Date().getTime() };
+    const newPost: IPost = {
+      ...action.post,
+      postId: new Date().getTime().toString(),
+    };
 
     return {
       ...state,

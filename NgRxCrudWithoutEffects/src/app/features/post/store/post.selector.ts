@@ -12,7 +12,7 @@ export const postsListSelector = createSelector(
 );
 
 // factory selector
-export const postSelector = (postId: number) =>
+export const postSelector = (postId: string) =>
   createSelector(postFeatureSelector, (state) => {
     return state.posts.find((x) => x.postId === postId);
   });

@@ -9,16 +9,22 @@ import { CounterModule } from './features/counter/counter.module';
 import { PostModule } from './features/post/post.module';
 import { EffectsModule } from '@ngrx/effects';
 import { HeaderComponent } from './Layout/header/header.component';
+import { AuthModule } from './features/auth/auth.module';
+import { ToastrModule } from 'ngx-toastr';
+import { LoadingSpinnerComponent } from './Shared/loading-spinner/loading-spinner.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent],
+  declarations: [AppComponent, HeaderComponent, LoadingSpinnerComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     StoreModule.forRoot(appReducer),
     StoreDevtoolsModule.instrument({ logOnly: !isDevMode() }),
     CounterModule, // feature module eager loading
-    PostModule, EffectsModule.forRoot([]),
+    PostModule,
+    AuthModule,
+    EffectsModule.forRoot([]),
+    ToastrModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

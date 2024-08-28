@@ -20,7 +20,6 @@ interface ISignInForm {
 export class SigninComponent {
   fb = inject(NonNullableFormBuilder);
   signInForm: FormGroup<ISignInForm>;
-
   authService = inject(AuthService);
 
   constructor() {
@@ -33,5 +32,11 @@ export class SigninComponent {
   onSignIn() {
     console.log(this.signInForm.value);
     console.log(this.signInForm.getRawValue());
+    this.authService
+      .login(
+        this.signInForm.getRawValue().email,
+        this.signInForm.getRawValue().password
+      )
+      .subscribe();
   }
 }

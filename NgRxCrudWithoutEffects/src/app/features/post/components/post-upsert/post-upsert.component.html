@@ -1,11 +1,20 @@
 <form [formGroup]="postForm" (ngSubmit)="upsert()">
+  <input *ngIf="isEditMode" type="hidden" formControlName="postId" />
 
-    <input *ngIf="isEditMode" type="hidden" formControlName="postId">
+  <div class="row">
+    <label for="">Title</label>
+    <input type="text" formControlName="title" placeholder="Enter title..." />
+  </div>
 
-    <div class="row ">
-        <label for="">Title</label>
-        <input type="text" formControlName="title" placeholder="Enter title...">
-    </div>
+  <div class="row">
+    <label for="">Description</label>
+    <textarea
+      formControlName="description"
+      placeholder="Enter title..."
+    ></textarea>
+  </div>
 
-    <button [disabled]="!postForm.valid" class="btn btn-success">{{isEditMode ? 'Update Post' : 'Add Post'}}</button>
+  <button [disabled]="!postForm.valid" class="btn btn-success">
+    {{ isEditMode ? "Update Post" : "Add Post" }}
+  </button>
 </form>

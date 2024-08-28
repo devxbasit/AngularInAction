@@ -8,7 +8,7 @@ export interface IPostState {
 
 export const postInitialState: IPostState = {
   posts: [
-    { postId: 1, title: 'Post 1 title' },
-    { postId: 2, title: 'Post 2 title' },
+    { postId: '1', title: 'Post 1 title', description: 'Post 1 description' },
+    { postId: '2', title: 'Post 2 title', description: 'Post 2 description' },
   ],
 };

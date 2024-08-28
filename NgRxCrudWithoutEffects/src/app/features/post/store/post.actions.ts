@@ -11,5 +11,5 @@ export const updatePostAction = createAction(
 );
 export const deletePostAction = createAction(
   '[Post] Delete Post',
-  props<{ postId: number }>()
+  props<{ postId: string }>()
 );

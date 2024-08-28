@@ -1,3 +1,4 @@
+import { environment } from './../../../environments/environment';
 import { inject, Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
 import {
@@ -6,18 +7,18 @@ import {
   IUser,
 } from '../interfaces/core.interface.ts';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { environment } from 'src/environments/environment.js';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   httpClient = inject(HttpClient);
+  env = environment;
 
   login(email: string, password: string): Observable<ISignInResponse> {
     return this.httpClient
       .post<ISignInResponse>(
-        `${environment.firebaseAuthApiBaseUrl}/accounts:signInWithPassword?key=${environment.firebaseWebApiKey}`,
+        `${this.env.firebaseAuthApiBaseUrl}/accounts:signInWithPassword?key=${this.env.firebaseWebApiKey}`,
         { email, password, returnSecureToken: true }
       )
       .pipe(catchError(this.handleAuthError));
@@ -26,7 +27,7 @@ export class AuthService {
   signup(email: string, password: string): Observable<ISignUpResponse> {
     return this.httpClient
       .post<ISignUpResponse>(
-        `${environment.firebaseAuthApiBaseUrl}/accounts:signUp?key=${environment.firebaseWebApiKey}`,
+        `${this.env.firebaseAuthApiBaseUrl}/accounts:signUp?key=${this.env.firebaseWebApiKey}`,
         { email, password, returnSecureToken: true }
       )
       .pipe(catchError(this.handleAuthError));

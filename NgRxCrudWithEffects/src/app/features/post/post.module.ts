@@ -6,6 +6,8 @@ import { PostUpsertComponent } from './components/post-upsert/post-upsert.compon
 import { PostRoutingModule } from './post-routing.module';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { EffectsModule } from '@ngrx/effects';
+import { PostEffects } from './store/post.effects';
 
 @NgModule({
   declarations: [
@@ -13,7 +15,12 @@ import { ReactiveFormsModule } from '@angular/forms';
     PostListComponent,
     PostUpsertComponent,
   ],
-  imports: [CommonModule, RouterModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    ReactiveFormsModule,
+    EffectsModule.forFeature([PostEffects]),
+  ],
   exports: [PostRoutingModule],
 })
 export class PostModule {}

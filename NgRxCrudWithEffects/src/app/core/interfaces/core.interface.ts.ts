@@ -1,6 +1,7 @@
 export interface IPost {
-  postId?: number;
+  postId?: string;
   title: string;
+  description: string;
 }
 
 export interface IEnvironment {

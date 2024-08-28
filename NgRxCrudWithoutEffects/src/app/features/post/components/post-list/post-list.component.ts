@@ -29,7 +29,7 @@ export class PostListComponent implements OnInit {
     });
   }
 
-  editPost(postId?: number) {
+  editPost(postId?: string) {
     if (postId) {
       this.router.navigate(['upsert'], {
         relativeTo: this.activatedRoute,
@@ -38,7 +38,7 @@ export class PostListComponent implements OnInit {
     }
   }
 
-  deletePost(postId?: number) {
+  deletePost(postId?: string) {
     if (postId) {
       this.store.dispatch(deletePostAction({ postId }));
     }

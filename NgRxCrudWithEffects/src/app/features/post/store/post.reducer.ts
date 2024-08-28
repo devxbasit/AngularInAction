@@ -1,26 +1,33 @@
 import { createReducer, on } from '@ngrx/store';
 import { postInitialState } from './post.state';
 import {
-  addPostAction,
-  deletePostAction,
-  updatePostAction,
+  loadPostsSuccessAction,
+  addPostSuccessAction,
+  updatePostSuccessAction,
+  deletePostSuccessAction
 } from './post.actions';
-import { IPost } from 'src/app/core/interfaces/core.interface.ts';
 
 const _postReducer = createReducer(
   postInitialState,
-  on(addPostAction, (state, action) => {
-    console.log('Add post reducer in action');
 
-    const newPost: IPost = { ...action.post, postId: new Date().getTime() };
+  on(loadPostsSuccessAction, (state, action) => {
+    console.log('Load posts success reducer in action');
+    return {
+      ...state,
+      posts: [...action.posts],
+    };
+  }),
+
+  on(addPostSuccessAction, (state, action) => {
+    console.log('Add post success reducer in action');
 
     return {
       ...state,
-      posts: [...state.posts, newPost],
+      posts: [...state.posts, action.post],
     };
   }),
-  on(updatePostAction, (state, action) => {
-    console.log('Update post reducer in action');
+  on(updatePostSuccessAction, (state, action) => {
+    console.log('Update post success reducer in action');
 
     const updatedPosts = state.posts.map((x) =>
       x.postId === action.post.postId ? action.post : x
@@ -31,8 +38,8 @@ const _postReducer = createReducer(
       posts: updatedPosts,
     };
   }),
-  on(deletePostAction, (state, action) => {
-    console.log('Delete post reducer in action');
+  on(deletePostSuccessAction, (state, action) => {
+    console.log('Delete post success reducer in action');
 
     return {
       ...state,
