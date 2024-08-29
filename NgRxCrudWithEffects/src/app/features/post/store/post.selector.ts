@@ -1,15 +1,11 @@
-import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { IPostState, POST_FEATURE_NAME } from './post.state';
+import { createFeatureSelector, createSelector } from "@ngrx/store";
+import { IPostState, POST_FEATURE_NAME } from "./post.state";
 
-const postFeatureSelector =
-  createFeatureSelector<IPostState>(POST_FEATURE_NAME);
+const postFeatureSelector = createFeatureSelector<IPostState>(POST_FEATURE_NAME);
 
-export const postsListSelector = createSelector(
-  postFeatureSelector,
-  (state) => {
-    return state.posts;
-  }
-);
+export const postsListSelector = createSelector(postFeatureSelector, (state) => {
+  return state.posts;
+});
 
 // factory selector
 export const postSelector = (postId: string) =>

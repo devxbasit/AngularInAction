@@ -15,7 +15,7 @@ export class AuthService {
   httpClient = inject(HttpClient);
   env = environment;
 
-  login(email: string, password: string): Observable<ISignInResponse> {
+  signIn(email: string, password: string): Observable<ISignInResponse> {
     return this.httpClient
       .post<ISignInResponse>(
         `${this.env.firebaseAuthApiBaseUrl}/accounts:signInWithPassword?key=${this.env.firebaseWebApiKey}`,
@@ -50,7 +50,7 @@ export class AuthService {
   handleAuthError(err: HttpErrorResponse) {
     let errorMessage = '';
 
-    switch (err.error.message) {
+    switch (err.error.error.errors[0].message) {
       case 'EMAIL_EXISTS':
         errorMessage = 'User email exists!';
         break;
@@ -66,6 +66,10 @@ export class AuthService {
         errorMessage = 'Email Id not found!';
         break;
 
+      case 'INVALID_EMAIL':
+        errorMessage = 'Invalid email!';
+        break;
+
       case 'INVALID_PASSWORD':
         errorMessage = 'Invalid password!';
         break;
@@ -75,7 +79,8 @@ export class AuthService {
         break;
 
       default:
-        errorMessage = 'Internal server error!';
+        errorMessage = err.error.error.errors[0].message;
+        break;
     }
 
     return throwError(new Error(errorMessage));

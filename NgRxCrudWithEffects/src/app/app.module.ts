@@ -12,6 +12,8 @@ import { HeaderComponent } from './Layout/header/header.component';
 import { AuthModule } from './features/auth/auth.module';
 import { ToastrModule } from 'ngx-toastr';
 import { LoadingSpinnerComponent } from './Shared/loading-spinner/loading-spinner.component';
+import { AuthEffects } from './features/auth/store/auth.effects';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, LoadingSpinnerComponent],
@@ -23,8 +25,9 @@ import { LoadingSpinnerComponent } from './Shared/loading-spinner/loading-spinne
     CounterModule, // feature module eager loading
     PostModule,
     AuthModule,
-    EffectsModule.forRoot([]),
-    ToastrModule,
+    EffectsModule.forRoot([AuthEffects]),
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

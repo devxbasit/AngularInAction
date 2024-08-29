@@ -5,7 +5,9 @@ import {
   NonNullableFormBuilder,
   Validators,
 } from '@angular/forms';
-import { AuthService } from 'src/app/core/services/auth.service';
+import { Store } from '@ngrx/store';
+import { IAppState } from 'src/app/store/app.reducer';
+import { signInStartAction } from '../../store/auth.actions';
 
 interface ISignInForm {
   email: FormControl<string>;
@@ -13,14 +15,14 @@ interface ISignInForm {
 }
 
 @Component({
-  selector: 'app-signin',
-  templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.css'],
+  selector: 'app-sign-in',
+  templateUrl: './sign-in.component.html',
+  styleUrls: ['./sign-in.component.css'],
 })
-export class SigninComponent {
+export class SignInComponent {
   fb = inject(NonNullableFormBuilder);
   signInForm: FormGroup<ISignInForm>;
-  authService = inject(AuthService);
+  store = inject(Store<IAppState>);
 
   constructor() {
     this.signInForm = this.fb.group({
@@ -30,13 +32,11 @@ export class SigninComponent {
   }
 
   onSignIn() {
-    console.log(this.signInForm.value);
-    console.log(this.signInForm.getRawValue());
-    this.authService
-      .login(
-        this.signInForm.getRawValue().email,
-        this.signInForm.getRawValue().password
-      )
-      .subscribe();
+    this.store.dispatch(
+      signInStartAction({
+        email: this.signInForm.getRawValue().email,
+        password: this.signInForm.getRawValue().password,
+      })
+    );
   }
 }

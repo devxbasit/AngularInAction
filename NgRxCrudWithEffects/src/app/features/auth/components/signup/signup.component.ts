@@ -5,7 +5,9 @@ import {
   Validators,
   FormControl,
 } from '@angular/forms';
-import { AuthService } from 'src/app/core/services/auth.service';
+import { Store } from '@ngrx/store';
+import { IAppState } from 'src/app/store/app.reducer';
+import { signupStartAction } from '../../store/auth.actions';
 
 interface ISignUpForm {
   email: FormControl<string>;
@@ -20,7 +22,7 @@ interface ISignUpForm {
 export class SignupComponent {
   fb = inject(NonNullableFormBuilder);
   signUpForm: FormGroup<ISignUpForm>;
-  authService = inject(AuthService);
+  store = inject(Store<IAppState>);
 
   constructor() {
     this.signUpForm = this.fb.group({
@@ -30,13 +32,11 @@ export class SignupComponent {
   }
 
   onSignUp() {
-    console.log(this.signUpForm.value);
-    console.log(this.signUpForm.getRawValue());
-    this.authService
-      .signup(
-        this.signUpForm.getRawValue().email,
-        this.signUpForm.getRawValue().password
-      )
-      .subscribe();
+    this.store.dispatch(
+      signupStartAction({
+        email: this.signUpForm.getRawValue().email,
+        password: this.signUpForm.getRawValue().password,
+      })
+    );
   }
 }

@@ -1,12 +1,13 @@
 <div style="width: 300px; margin: auto">
-  <h1>Sign Up</h1>
-  <form [formGroup]="signUpForm" (ngSubmit)="onSignUp()">
+  <h1>Sign In</h1>
+
+  <form [formGroup]="signInForm" (ngSubmit)="onSignIn()">
     <input class="form-control" type="text" formControlName="email" placeholder="Enter email..." />
     <br />
     <input class="form-control" type="text" formControlName="password" placeholder="Enter password..." />
     <br />
-    <button class="btn btn-primary" type="submit" [disabled]="!signUpForm.valid">
-      Sign Up
+    <button class="btn btn-primary" type="submit" [disabled]="!signInForm.valid">
+      Sign In
     </button>
   </form>
 </div>
